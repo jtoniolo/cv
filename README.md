@@ -48,31 +48,56 @@ This application is used to host the CV of the author.
    - Create new Angular application with CLI
    - Configure TypeScript for strict mode
    - Set up Angular Material
-   - Configure NgRx
+   - Configure NgRx store and effects
+   - Implement basic routing structure
 
-4. Core Application Structure
-   - Implement base layout (header/footer)
-   - Create routing structure
-   - Set up shared types and interfaces
-   - Implement NgRx store basics
+4. Core Experience Implementation
+   - Create CV container and data service
+   - Implement header with search and navigation
+   - Add footer component
+   - Build basics section component
+   - Set up initial theme and responsive layout
 
-5. Component Development
-   (To be expanded after component analysis in task 2)
+5. Career Timeline Implementation
+   - Create shared timeline component
+   - Build experience section components
+   - Implement experience filtering
+   - Add company and position display
+   - Integrate project details view
 
-6. Feature Implementation
-   - Implement search/filtering functionality
-   - Add PDF export feature with pagination
-   - Implement responsive design adjustments
+6. Supporting Sections
+   - Implement education section with timeline integration
+   - Build skills section with grid/list views
+   - Add certifications display
+   - Integrate section navigation
 
-7. Testing and Quality Assurance
-   - Unit tests for components
-   - Integration tests for features
-   - Accessibility testing
-   - Performance optimization
+7. Search and Filter Feature
+   - Implement search component with autocomplete
+   - Add filter chips for active filters
+   - Create search service with keyword matching
+   - Integrate section toggling
+   - Add search result highlighting
 
-8. Deployment Setup
-   - Create GitHub Pages folder structure
-   - Configure build settings for GitHub Pages
-   - Create GitHub Actions workflow for automated deployment
-   - Set up deployment branch structure (dev/main)
+8. PDF Export Feature
+   - Create PDF export component and service
+   - Implement export configuration dialog
+   - Add progress indicator
+   - Handle pagination and headers/footers
+   - Set up download management
+
+9. Polish and Optimization
+   - Implement dark mode toggle
+   - Add responsive layout adjustments
+   - Set up lazy loading
+   - Implement caching strategy
+   - Add error handling
+   - Ensure accessibility compliance
+
+10. Testing and Deployment
+    - Write unit tests for components
+    - Add integration tests for features
+    - Set up GitHub Pages configuration
+    - Create deployment workflow
+    - Configure production build
+    - Add documentation
 
