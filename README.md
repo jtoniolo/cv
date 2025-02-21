@@ -33,13 +33,46 @@ This application is used to host the CV of the author.
 
 # Tasks
 
-1. Convert the content of example.html into json.
-2. Use the layout of example.html and the data in the generated json to inform the layout and components required for the app.
-3. Determine which components will be needed. Update the tasks section of the README with tasks for each component. Renumber tasks as needed.
-4. Add the Github Pages folder
-5. Create the app.
-6. Create a GitHub action that will be used to build and deploy the app to the pages folder. This will be triggered when merging a PR from dev to main.
-5. Create components (replace this with component tasks).
-6. Add search/filtering functionality.
-7. Add export feature.
+1. Data Structure Setup
+   - Convert example.html content into JSON format
+   - Generate JSON schema for CV data validation
+   - Add keywords array for each CV section
+
+2. Application Architecture Planning
+   - Analyze example.html layout
+   - Determine required components and their relationships
+   - Plan state management structure with NgRx
+   - Document component specifications
+
+3. Initial Application Setup
+   - Create new Angular application with CLI
+   - Configure TypeScript for strict mode
+   - Set up Angular Material
+   - Configure NgRx
+
+4. Core Application Structure
+   - Implement base layout (header/footer)
+   - Create routing structure
+   - Set up shared types and interfaces
+   - Implement NgRx store basics
+
+5. Component Development
+   (To be expanded after component analysis in task 2)
+
+6. Feature Implementation
+   - Implement search/filtering functionality
+   - Add PDF export feature with pagination
+   - Implement responsive design adjustments
+
+7. Testing and Quality Assurance
+   - Unit tests for components
+   - Integration tests for features
+   - Accessibility testing
+   - Performance optimization
+
+8. Deployment Setup
+   - Create GitHub Pages folder structure
+   - Configure build settings for GitHub Pages
+   - Create GitHub Actions workflow for automated deployment
+   - Set up deployment branch structure (dev/main)
 
