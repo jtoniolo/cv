@@ -1,0 +1,37 @@
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 64px;
+}
+
+.left-section {
+  flex: 0 0 auto;
+}
+
+.center-section {
+  flex: 1 1 auto;
+  max-width: 600px;
+  margin: 0 24px;
+}
+
+.right-section {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+}
+
+.search-field {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .center-section {
+    margin: 0 8px;
+  }
+
+  .search-field {
+    width: 150px;
+  }
+}
