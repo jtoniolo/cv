@@ -31,12 +31,18 @@ This application is used to host the CV of the author.
 - I want to host on GitHub pages. Create a folder to deploy the app. You'll need to add a place-holder file (index.html) as first.
 - Feel free to offer suggestions or add missing tasks.
 
+# Development Instructions
+- Always verify changes with `yarn build` first to check for build errors
+- Once build passes, run `yarn start` to launch the development server
+- Demo and verify changes in the browser
+
 # Tasks
 
 1. Data Structure Setup
    - Convert example.html content into JSON format
    - Generate JSON schema for CV data validation
    - Add keywords array for each CV section
+   - Validate JSON against schema
 
 2. Application Architecture Planning
    - Analyze example.html layout
@@ -50,6 +56,8 @@ This application is used to host the CV of the author.
    - Set up Angular Material
    - Configure NgRx store and effects
    - Implement basic routing structure
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify application loads
 
 4. Core Experience Implementation
    - Create CV container and data service
@@ -57,6 +65,8 @@ This application is used to host the CV of the author.
    - Add footer component
    - Build basics section component
    - Set up initial theme and responsive layout
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify layout implementation
 
 5. Career Timeline Implementation
    - Create shared timeline component
@@ -64,12 +74,16 @@ This application is used to host the CV of the author.
    - Implement experience filtering
    - Add company and position display
    - Integrate project details view
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify timeline functionality
 
 6. Supporting Sections
    - Implement education section with timeline integration
    - Build skills section with grid/list views
    - Add certifications display
    - Integrate section navigation
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify all sections
 
 7. Search and Filter Feature
    - Implement search component with autocomplete
@@ -77,6 +91,8 @@ This application is used to host the CV of the author.
    - Create search service with keyword matching
    - Integrate section toggling
    - Add search result highlighting
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify search functionality
 
 8. PDF Export Feature
    - Create PDF export component and service
@@ -84,6 +100,8 @@ This application is used to host the CV of the author.
    - Add progress indicator
    - Handle pagination and headers/footers
    - Set up download management
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify PDF generation
 
 9. Polish and Optimization
    - Implement dark mode toggle
@@ -92,6 +110,8 @@ This application is used to host the CV of the author.
    - Implement caching strategy
    - Add error handling
    - Ensure accessibility compliance
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify optimizations
 
 10. Testing and Deployment
     - Write unit tests for components
@@ -100,4 +120,7 @@ This application is used to host the CV of the author.
     - Create deployment workflow
     - Configure production build
     - Add documentation
+    - Run `yarn build` to verify production build
+    - Run `yarn test` to verify all tests pass
+    - Deploy to GitHub Pages and verify deployment
 

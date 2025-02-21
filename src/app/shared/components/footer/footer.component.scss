@@ -1,0 +1,17 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer-content {
+  width: 100%;
+  text-align: center;
+  padding: 8px 0;
+}
+
+:host {
+  display: block;
+  height: 64px; // Match the height for proper spacing in the main content
+}

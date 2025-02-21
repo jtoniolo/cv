@@ -1,35 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-cv-container',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, MatSidenavModule, MatToolbarModule],
+  imports: [RouterOutlet],
   template: `
-    <mat-sidenav-container>
-      <mat-toolbar color="primary">
-        <span>CV</span>
-      </mat-toolbar>
-
-      <main>
-        <router-outlet></router-outlet>
-      </main>
-    </mat-sidenav-container>
+    <div class="cv-content">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [`
-    :host {
-      display: block;
-      height: 100vh;
-    }
-
-    mat-sidenav-container {
-      height: 100%;
-    }
-
-    main {
+    .cv-content {
       padding: 20px;
+      height: 100%;
     }
   `]
 })
