@@ -1,0 +1,36 @@
+.company-timeline {
+  margin-bottom: 3rem;
+}
+
+.company-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  h3 {
+    color: var(--gray-900);
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .duration {
+    color: var(--gray-700);
+    font-size: 0.9rem;
+  }
+}
+
+.positions-timeline {
+  position: relative;
+  padding-left: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--red-to-pink-to-purple-vertical-gradient);
+  }
+}

@@ -1,0 +1,26 @@
+<div class="timeline-container" [class.with-line]="config.showLine">
+  <div class="timeline-item" *ngFor="let item of items" [class.hidden]="!isItemVisible(item)">
+    <div class="timeline-marker"></div>
+    <mat-card class="timeline-card" [class.animate]="config.animate">
+      <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ item.subtitle }}
+          <span class="date-range">
+            {{ formatDate(item.startDate) }} - {{ formatDate(item.endDate) }}
+          </span>
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <pre class="content-text">{{ item.content }}</pre>
+        <mat-chip-set *ngIf="config.showTags && item.tags?.length">
+          <mat-chip *ngFor="let tag of item.tags">{{ tag }}</mat-chip>
+        </mat-chip-set>
+        <ng-container *ngIf="item.metadata">
+          <app-experience-item [projects]="item.metadata.projects"></app-experience-item>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

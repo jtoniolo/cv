@@ -1,0 +1,16 @@
+<div class="company-timeline">
+  <div class="company-header">
+    <h3>{{ company().company }}</h3>
+    <span class="duration">{{ getTotalDuration() }}</span>
+  </div>
+
+  <div class="positions-timeline">
+    <ng-container *ngFor="let position of company().positions">
+      <app-timeline-item
+        [position]="position"
+        [companyName]="company().company"
+        [activeFilters]="activeFilters()">
+      </app-timeline-item>
+    </ng-container>
+  </div>
+</div>

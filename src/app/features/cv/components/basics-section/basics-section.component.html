@@ -1,0 +1,12 @@
+<section class="basics-section" *ngIf="basics()">
+  <h1>{{ basics()?.title }}</h1>
+  <p class="summary">{{ basics()?.summary }}</p>
+  <div class="highlights">
+    <h3>Key Highlights</h3>
+    <mat-chip-set>
+      <mat-chip *ngFor="let highlight of basics()?.highlights">
+        {{ highlight }}
+      </mat-chip>
+    </mat-chip-set>
+  </div>
+</section>
