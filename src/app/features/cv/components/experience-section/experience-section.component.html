@@ -1,0 +1,20 @@
+<section class="experience-section">
+  <h2>Professional Experience</h2>
+
+  <div class="filters" *ngIf="(experiences$ | async)?.length">
+    <mat-chip-listbox aria-label="Experience filters">
+      <mat-chip-option selected>All</mat-chip-option>
+      <mat-chip-option value="Development">Development</mat-chip-option>
+      <mat-chip-option value="Leadership">Leadership</mat-chip-option>
+      <mat-chip-option value="Architecture">Architecture</mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+
+  <ng-container *ngIf="experiences$ | async as experiences">
+    <app-timeline
+      [items]="experiences"
+      [config]="timelineConfig"
+      [activeFilters]="activeFilters">
+    </app-timeline>
+  </ng-container>
+</section>
