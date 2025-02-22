@@ -1,8 +1,13 @@
+{{ selectedSection() }}
 <div class="cv-container">
   <app-basics-section></app-basics-section>
   <app-experience-section
-    *ngIf="['all', 'experience'].indexOf(selectedSection()) > -1"
+    *ngIf="selectedSection() | sectionVisible : 'experience'"
   ></app-experience-section>
-  <app-education-section></app-education-section>
-  <app-skills-section></app-skills-section>
+  <app-education-section
+    *ngIf="selectedSection() | sectionVisible : 'education'"
+  ></app-education-section>
+  <app-skills-section
+    *ngIf="selectedSection() | sectionVisible : 'skills'"
+  ></app-skills-section>
 </div>

@@ -7,6 +7,7 @@ import { BasicsSectionComponent } from './components/basics-section/basics-secti
 import { EducationSectionComponent } from './components/education-section/education-section.component';
 import { SkillsSectionComponent } from './components/skills-section/skills-section.component';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { SectionVisiblePipe } from '@app/shared/pipes/section-visible.pipe';
 
 @Component({
   selector: 'app-cv',
@@ -17,6 +18,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     ExperienceSectionComponent,
     EducationSectionComponent,
     SkillsSectionComponent,
+    SectionVisiblePipe,
   ],
   templateUrl: './cv.component.html',
   styleUrls: ['./cv.component.scss'],
