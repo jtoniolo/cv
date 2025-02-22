@@ -51,3 +51,51 @@ export const selectSkills = createSelector(
   selectCvState,
   (state: CvState) => state.skills
 );
+
+export const selectFilterTerm = createSelector(
+  selectCvState,
+  (state: CvState) => state.filterTerm
+);
+
+export const selectFilteredCompanies = createSelector(
+  selectCompanies,
+  selectFilterTerm,
+  (companies, filterTerm) => {
+    if (!filterTerm) return companies;
+    const term = filterTerm.toLowerCase();
+    
+    return companies.filter(company => 
+      company.positions.some(position => 
+        position.keywords.some(k => k.toLowerCase().includes(term))
+      )
+    );
+  }
+);
+
+export const selectFilteredEducation = createSelector(
+  selectEducation,
+  selectFilterTerm,
+  (education, filterTerm) => {
+    if (!filterTerm) return education;
+    const term = filterTerm.toLowerCase();
+    
+    return education.filter(edu => 
+      edu.keywords.some(k => k.toLowerCase().includes(term))
+    );
+  }
+);
+
+export const selectFilteredSkills = createSelector(
+  selectSkills,
+  selectFilterTerm,
+  (skills, filterTerm) => {
+    if (!filterTerm) return skills;
+    const term = filterTerm.toLowerCase();
+    
+    return {
+      categories: skills.categories.filter(category => 
+        category.keywords.some(k => k.toLowerCase().includes(term))
+      )
+    };
+  }
+);

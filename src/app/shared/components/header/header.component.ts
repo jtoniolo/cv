@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,8 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionSelectorComponent } from '../section-selector/section-selector.component';
+import { CvPageActions } from '../../../state';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -31,15 +33,15 @@ import { SectionSelectorComponent } from '../section-selector/section-selector.c
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  private readonly store = inject(Store);
   searchControl = new FormControl('');
 
-  constructor(private store: Store) {}
-
-  onSearch(): void {
-    const searchTerm = this.searchControl.value;
-    if (searchTerm) {
-      // We'll implement the search action later when we work on the search feature
-      console.log('Searching for:', searchTerm);
-    }
+  constructor() {
+    this.searchControl.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(term => {
+      this.store.dispatch(CvPageActions.setFilterTerm({ term: term || '' }));
+    });
   }
 }
