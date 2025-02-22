@@ -1,0 +1,41 @@
+<div class="education-container">
+  <section class="education">
+    <div class="section-header">
+      <h2>Education History</h2>
+    </div>
+    <div class="education-grid">
+      <mat-card *ngFor="let edu of education()" class="education-card">
+        <mat-card-content>
+          <h3>{{ edu.degree }}</h3>
+          <p>{{ edu.institution }}</p>
+          <mat-chip-set>
+            <mat-chip *ngFor="let keyword of edu.keywords">{{
+              keyword
+            }}</mat-chip>
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="certifications" *ngIf="certifications()?.length">
+    <div class="section-header">
+      <h2>Certifications</h2>
+    </div>
+    <div class="certifications-grid">
+      <mat-card
+        *ngFor="let cert of certifications()"
+        class="certification-card"
+      >
+        <mat-card-content>
+          <h3>{{ cert.name }}</h3>
+          <mat-chip-set>
+            <mat-chip *ngFor="let keyword of cert.keywords">{{
+              keyword
+            }}</mat-chip>
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</div>

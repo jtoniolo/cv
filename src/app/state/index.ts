@@ -12,3 +12,6 @@ export const selectBasics = Selectors.selectBasics;
 export const selectCompanies = Selectors.selectCompanies;
 export const selectError = Selectors.selectError;
 export const selectLoading = Selectors.selectLoading;
+export const selectEducation = Selectors.selectEducation;
+export const selectSkills = Selectors.selectSkills;
+export const selectCertifications = Selectors.selectCertifications;
