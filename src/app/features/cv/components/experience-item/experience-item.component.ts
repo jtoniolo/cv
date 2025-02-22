@@ -7,11 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Project } from '../../../../models/cv.model';
 import { Store } from '@ngrx/store';
 import { CvState } from '../../../../state/cv/cv.state';
-import {
-  CvPageActions,
-  selectAllProjectsExpanded,
-  selectExpandedProjects,
-} from '../../../../state';
+import { CvPageActions } from '../../../../state';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -32,8 +28,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class ExperienceItemComponent {
   private readonly store = inject(Store<CvState>);
   projects = input<Project[]>([]);
-  allExpanded = toSignal(this.store.select(selectAllProjectsExpanded));
-  expandedProjects = toSignal(this.store.select(selectExpandedProjects));
   accordion = viewChild.required(MatAccordion);
 
   toggleAll(collapse: boolean = true) {

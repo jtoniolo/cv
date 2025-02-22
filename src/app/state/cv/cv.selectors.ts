@@ -32,21 +32,3 @@ export const selectCompanies = createSelector(
     });
   }
 );
-
-export const selectExpandedProjects = createSelector(
-  selectCvState,
-  (state: CvState) => state.expandedProjects
-);
-
-export const selectAllProjectsExpanded = createSelector(
-  selectCvState,
-  (state: CvState) => {
-    const projects = state.experience
-      .flatMap(company => company.positions)
-      .flatMap(position => position.projects || []);
-
-    if (!projects.length) return false;
-
-    return projects.every(project => state.expandedProjects[project.name] ?? false);
-  }
-);
