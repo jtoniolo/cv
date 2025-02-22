@@ -32,10 +32,8 @@ export class ExperienceItemComponent {
 
   toggleAll(collapse: boolean = true) {
     if (collapse) {
-      this.store.dispatch(CvPageActions.collapseAllProjects());
       this.accordion().closeAll();
     } else {
-      this.store.dispatch(CvPageActions.expandAllProjects());
       this.accordion().openAll();
     }
   }

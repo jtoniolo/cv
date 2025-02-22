@@ -12,7 +12,6 @@ export interface CvState {
   sectionFilters: {
     [key in 'experience' | 'education' | 'skills']: boolean;
   };
-  expandedProjects: { [key: string]: boolean };
 }
 
 export const initialCvState: CvState = {
@@ -27,7 +26,6 @@ export const initialCvState: CvState = {
   sectionFilters: {
     experience: true,
     education: true,
-    skills: true
+    skills: true,
   },
-  expandedProjects: {}
 };
