@@ -1,0 +1,65 @@
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2.4rem;
+  top: 1.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--bright-blue);
+  z-index: 1;
+}
+
+.position-card {
+  margin-left: 0.5rem;
+
+  mat-card-header {
+    margin-bottom: 1rem;
+  }
+
+  mat-card-title {
+    color: var(--gray-900);
+  }
+
+  mat-card-subtitle {
+    color: var(--gray-700);
+  }
+
+  .date-range {
+    color: var(--gray-400);
+  }
+}
+
+.summary {
+  margin-bottom: 1.5rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+h4 {
+  color: var(--gray-900);
+  margin: 1rem 0 0.5rem;
+}
+
+.responsibilities {
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+  color: var(--gray-700);
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+}
+
+mat-chip-set {
+  margin: 1rem 0;
+}

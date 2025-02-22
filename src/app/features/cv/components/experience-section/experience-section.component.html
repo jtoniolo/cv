@@ -1,20 +1,38 @@
 <section class="experience-section">
   <h2>Professional Experience</h2>
 
-  <div class="filters" *ngIf="(experiences$ | async)?.length">
-    <mat-chip-listbox aria-label="Experience filters">
-      <mat-chip-option selected>All</mat-chip-option>
-      <mat-chip-option value="Development">Development</mat-chip-option>
-      <mat-chip-option value="Leadership">Leadership</mat-chip-option>
-      <mat-chip-option value="Architecture">Architecture</mat-chip-option>
-    </mat-chip-listbox>
-  </div>
+  <ng-container *ngIf="loading()">
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  </ng-container>
 
-  <ng-container *ngIf="experiences$ | async as experiences">
-    <app-timeline
-      [items]="experiences"
-      [config]="timelineConfig"
-      [activeFilters]="activeFilters">
-    </app-timeline>
+  <ng-container *ngIf="error()">
+    <div class="error-message">
+      {{ error() }}
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="companies()">
+    <div class="filters" *ngIf="availableTags()">
+      <mat-chip-listbox
+        aria-label="Experience filters"
+        (change)="onFilterChange($event)"
+      >
+        <mat-chip-option selected value="All">All</mat-chip-option>
+        <mat-chip-option *ngFor="let tag of availableTags()" [value]="tag">
+          {{ tag }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="companies-list">
+      <app-company-timeline
+        *ngFor="let company of companies()"
+        [company]="company"
+        [activeFilters]="activeFilters"
+      >
+      </app-company-timeline>
+    </div>
   </ng-container>
 </section>

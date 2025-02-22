@@ -20,16 +20,63 @@ export const cvReducer = createReducer(
       [section]: enabled
     }
   })),
-  on(CvApiActions.cVLoadDataSuccess, (state, { data }) => ({
+  on(CvPageActions.toggleProjectExpansion, (state, { projectId, expanded }) => ({
     ...state,
-    loading: false,
-    error: null,
-    basics: data.basics,
-    experience: data.experience,
-    education: data.education,
-    skills: data.skills,
-    certifications: data.certifications
+    expandedProjects: {
+      ...state.expandedProjects,
+      [projectId]: expanded
+    }
   })),
+  on(CvPageActions.expandAllProjects, (state) => {
+    const allExpanded: { [key: string]: boolean } = {};
+    state.experience.forEach(company =>
+      company.positions.forEach(position =>
+        position.projects?.forEach(project =>
+          allExpanded[project.name] = true
+        )
+      )
+    );
+    return {
+      ...state,
+      expandedProjects: allExpanded
+    };
+  }),
+  on(CvPageActions.collapseAllProjects, (state) => {
+    const allCollapsed: { [key: string]: boolean } = {};
+    state.experience.forEach(company =>
+      company.positions.forEach(position =>
+        position.projects?.forEach(project =>
+          allCollapsed[project.name] = false
+        )
+      )
+    );
+    return {
+      ...state,
+      expandedProjects: allCollapsed
+    };
+  }),
+  on(CvApiActions.cVLoadDataSuccess, (state, { data }) => {
+    // Initialize all projects as expanded by default
+    const expandedProjects: { [key: string]: boolean } = {};
+    data.experience.forEach(company =>
+      company.positions.forEach(position =>
+        position.projects?.forEach(project =>
+          expandedProjects[project.name] = true
+        )
+      )
+    );
+    return {
+      ...state,
+      loading: false,
+      error: null,
+      basics: data.basics,
+      experience: data.experience,
+      education: data.education,
+      skills: data.skills,
+      certifications: data.certifications,
+      expandedProjects
+    };
+  }),
   on(CvApiActions.cVLoadDataFailure, (state, { error }) => ({
     ...state,
     loading: false,

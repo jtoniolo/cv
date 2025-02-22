@@ -1,27 +1,52 @@
 import { createSelector } from '@ngrx/store';
 import { CvState } from './cv.state';
-import { TimelineItem } from '../../shared/components/timeline/timeline.models';
-import { CompanyExperience, Position } from '../../models/cv.model';
+import { CompanyExperience } from '../../models/cv.model';
 
 export const selectCvState = (state: { cv: CvState }) => state.cv;
 
-export const selectExperiences = createSelector(
+export const selectLoading = createSelector(
   selectCvState,
-  (state: CvState): TimelineItem[] => {
+  (state: CvState) => state.loading
+);
+
+export const selectError = createSelector(
+  selectCvState,
+  (state: CvState) => state.error
+);
+
+export const selectBasics = createSelector(
+  selectCvState,
+  (state: CvState) => state.basics
+);
+
+export const selectCompanies = createSelector(
+  selectCvState,
+  (state: CvState): CompanyExperience[] => {
     if (!state.experience) return [];
 
-    return state.experience.flatMap((company: CompanyExperience) =>
-      company.positions.map((position: Position) => ({
-        startDate: position.startDate,
-        endDate: position.endDate,
-        title: position.title,
-        subtitle: company.company,
-        content: position.summary || position.responsibilities?.join('\n') || '',
-        tags: position.keywords,
-        metadata: {
-          projects: position.projects
-        }
-      }))
-    ).sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()); // Sort by date descending
+    // Sort companies by most recent position's start date
+    return [...state.experience].sort((a, b) => {
+      const aLatest = new Date(a.positions[0].startDate).getTime();
+      const bLatest = new Date(b.positions[0].startDate).getTime();
+      return bLatest - aLatest;
+    });
+  }
+);
+
+export const selectExpandedProjects = createSelector(
+  selectCvState,
+  (state: CvState) => state.expandedProjects
+);
+
+export const selectAllProjectsExpanded = createSelector(
+  selectCvState,
+  (state: CvState) => {
+    const projects = state.experience
+      .flatMap(company => company.positions)
+      .flatMap(position => position.projects || []);
+
+    if (!projects.length) return false;
+
+    return projects.every(project => state.expandedProjects[project.name] ?? false);
   }
 );

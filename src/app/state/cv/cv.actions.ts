@@ -6,7 +6,10 @@ export const CvPageActions = createActionGroup({
   events: {
     'Load CV': emptyProps(),
     'Set Filter Term': props<{ term: string }>(),
-    'Toggle Section Filter': props<{ section: 'experience' | 'education' | 'skills', enabled: boolean }>()
+    'Toggle Section Filter': props<{ section: 'experience' | 'education' | 'skills', enabled: boolean }>(),
+    'Toggle Project Expansion': props<{ projectId: string; expanded: boolean }>(),
+    'Expand All Projects': emptyProps(),
+    'Collapse All Projects': emptyProps()
   }
 });
 
