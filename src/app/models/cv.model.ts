@@ -18,12 +18,14 @@ export interface CvData {
     keywords: string[];
   }[];
   skills: {
-    categories: {
-      name: string;
-      items: string[];
-      keywords: string[];
-    }[];
+    categories: SkillCategory[];
   };
+}
+
+export interface SkillCategory {
+  name: string;
+  items: string[];
+  keywords: string[];
 }
 
 export interface CompanyExperience {

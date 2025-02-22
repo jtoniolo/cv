@@ -1,14 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { CvPageActions } from '../../state';
 import { ExperienceSectionComponent } from './components/experience-section/experience-section.component';
 import { BasicsSectionComponent } from './components/basics-section/basics-section.component';
-import { CommonModule } from '@angular/common';
+import { EducationSectionComponent } from './components/education-section/education-section.component';
+import { SkillsSectionComponent } from './components/skills-section/skills-section.component';
 
 @Component({
   selector: 'app-cv',
   standalone: true,
-  imports: [CommonModule, BasicsSectionComponent, ExperienceSectionComponent],
+  imports: [
+    CommonModule,
+    BasicsSectionComponent,
+    ExperienceSectionComponent,
+    EducationSectionComponent,
+    SkillsSectionComponent,
+  ],
   templateUrl: './cv.component.html',
   styleUrls: ['./cv.component.scss'],
 })

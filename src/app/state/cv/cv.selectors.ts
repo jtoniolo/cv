@@ -32,3 +32,18 @@ export const selectCompanies = createSelector(
     });
   }
 );
+
+export const selectEducation = createSelector(
+  selectCvState,
+  (state: CvState) => state.education
+);
+
+export const selectCertifications = createSelector(
+  selectCvState,
+  (state: CvState) => state.certifications
+);
+
+export const selectSkills = createSelector(
+  selectCvState,
+  (state: CvState) => state.skills
+);
