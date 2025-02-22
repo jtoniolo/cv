@@ -1,34 +1,38 @@
 import { createReducer, on } from '@ngrx/store';
-import { CvActions } from './cv.actions';
+import { CvPageActions, CvApiActions } from './cv.actions';
 import { initialCvState } from './cv.state';
 
 export const cvReducer = createReducer(
   initialCvState,
-  on(CvActions.loadCv, (state) => ({
+  on(CvPageActions.loadCV, (state) => ({
     ...state,
     loading: true,
     error: null
   })),
-  on(CvActions.loadCvSuccess, (state, { data }) => ({
-    ...state,
-    data,
-    loading: false,
-    error: null
-  })),
-  on(CvActions.loadCvFailure, (state, { error }) => ({
-    ...state,
-    loading: false,
-    error
-  })),
-  on(CvActions.setFilterTerm, (state, { term }) => ({
+  on(CvPageActions.setFilterTerm, (state, { term }) => ({
     ...state,
     filterTerm: term
   })),
-  on(CvActions.toggleSectionFilter, (state, { section, enabled }) => ({
+  on(CvPageActions.toggleSectionFilter, (state, { section, enabled }) => ({
     ...state,
-    filteredSections: {
-      ...state.filteredSections,
+    sectionFilters: {
+      ...state.sectionFilters,
       [section]: enabled
     }
+  })),
+  on(CvApiActions.cVLoadDataSuccess, (state, { data }) => ({
+    ...state,
+    loading: false,
+    error: null,
+    basics: data.basics,
+    experience: data.experience,
+    education: data.education,
+    skills: data.skills,
+    certifications: data.certifications
+  })),
+  on(CvApiActions.cVLoadDataFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error
   }))
 );

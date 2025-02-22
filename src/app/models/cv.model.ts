@@ -1,19 +1,32 @@
+import { TimelineItem } from '@shared/components/timeline/timeline.models';
+
 export interface CvData {
   basics: {
     title: string;
     summary: string;
     highlights: string[];
-    keywords?: string[];
+    keywords: string[];
   };
-  experience: ExperienceItem[];
-  education: EducationItem[];
-  certifications: CertificationItem[];
+  experience: CompanyExperience[];
+  education: {
+    degree: string;
+    institution: string;
+    keywords: string[];
+  }[];
+  certifications: {
+    name: string;
+    keywords: string[];
+  }[];
   skills: {
-    categories: SkillCategory[];
+    categories: {
+      name: string;
+      items: string[];
+      keywords: string[];
+    }[];
   };
 }
 
-export interface ExperienceItem {
+export interface CompanyExperience {
   company: string;
   positions: Position[];
 }
@@ -23,37 +36,17 @@ export interface Position {
   startDate: string;
   endDate: string;
   summary?: string;
-  responsibilities: string[];
+  responsibilities?: string[];
   projects?: Project[];
-  keywords?: string[];
+  keywords: string[];
 }
 
 export interface Project {
   name: string;
-  role?: string;
+  role: string;
   responsibilities?: string;
-  technologies?: string[];
+  technologies: string[];
   challenges?: string;
   achievements?: string;
-  details?: string[];
-  keywords?: string[];
-}
-
-export interface EducationItem {
-  degree: string;
-  institution: string;
-  keywords?: string[];
-}
-
-export interface CertificationItem {
-  name: string;
-  issuer?: string;
-  date?: string;
-  keywords?: string[];
-}
-
-export interface SkillCategory {
-  name: string;
-  items: string[];
-  keywords?: string[];
+  keywords: string[];
 }

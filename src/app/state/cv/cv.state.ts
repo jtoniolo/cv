@@ -1,23 +1,29 @@
 import { CvData } from '../../models/cv.model';
 
 export interface CvState {
-  data: CvData | null;
+  basics: CvData['basics'] | null;
+  experience: CvData['experience'];
+  education: CvData['education'];
+  skills: CvData['skills'];
+  certifications: CvData['certifications'];
   loading: boolean;
   error: string | null;
   filterTerm: string;
-  filteredSections: {
-    experience: boolean;
-    education: boolean;
-    skills: boolean;
+  sectionFilters: {
+    [key in 'experience' | 'education' | 'skills']: boolean;
   };
 }
 
 export const initialCvState: CvState = {
-  data: null,
+  basics: null,
+  experience: [],
+  education: [],
+  skills: { categories: [] },
+  certifications: [],
   loading: false,
   error: null,
   filterTerm: '',
-  filteredSections: {
+  sectionFilters: {
     experience: true,
     education: true,
     skills: true

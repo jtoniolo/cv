@@ -9,7 +9,11 @@ import { CvData } from '../models/cv.model';
 export class CvService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Loads CV data from JSON file
+   * @returns Observable of CV data
+   */
   loadCvData(): Observable<CvData> {
-    return this.http.get<CvData>('/assets/data/cv.json');
+    return this.http.get<CvData>('/data/cv.json');
   }
 }
