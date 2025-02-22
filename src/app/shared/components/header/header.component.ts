@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SectionSelectorComponent } from '../section-selector/section-selector.component';
 
 @Component({
   selector: 'app-header',
@@ -23,10 +24,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    SectionSelectorComponent,
   ],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   searchControl = new FormControl('');

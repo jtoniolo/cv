@@ -19,11 +19,15 @@ export const selectBasics = createSelector(
   (state: CvState) => state.basics
 );
 
+export const selectSelectedSections = createSelector(
+  selectCvState,
+  (state: CvState) => state.selectedSections
+);
+
+// Update existing selectors to respect section visibility
 export const selectCompanies = createSelector(
   selectCvState,
   (state: CvState): CompanyExperience[] => {
-    if (!state.experience) return [];
-
     // Sort companies by most recent position's start date
     return [...state.experience].sort((a, b) => {
       const aLatest = new Date(a.positions[0].startDate).getTime();

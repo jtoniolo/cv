@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline">
+  <mat-label>Show Sections</mat-label>
+  <mat-select [value]="'all'" (selectionChange)="onSectionChange($event.value)">
+    <mat-option *ngFor="let section of sections" [value]="section.value">
+      {{ section.label }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -15,3 +15,4 @@ export const selectLoading = Selectors.selectLoading;
 export const selectEducation = Selectors.selectEducation;
 export const selectSkills = Selectors.selectSkills;
 export const selectCertifications = Selectors.selectCertifications;
+export const selectSelectedSections = Selectors.selectSelectedSections;

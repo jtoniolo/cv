@@ -52,3 +52,5 @@ export interface Project {
   achievements?: string;
   keywords: string[];
 }
+
+export type SelectableSection = 'all' | 'experience' | 'education' | 'skills';

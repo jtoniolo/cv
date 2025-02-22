@@ -1,6 +1,8 @@
 <div class="cv-container">
   <app-basics-section></app-basics-section>
-  <app-experience-section></app-experience-section>
+  <app-experience-section
+    *ngIf="['all', 'experience'].indexOf(selectedSection()) > -1"
+  ></app-experience-section>
   <app-education-section></app-education-section>
   <app-skills-section></app-skills-section>
 </div>

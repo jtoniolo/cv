@@ -7,12 +7,24 @@
     <div class="center-section">
       <mat-form-field appearance="outline" class="search-field">
         <mat-label>Search CV</mat-label>
-        <input matInput [formControl]="searchControl" type="text" placeholder="Search by keywords...">
-        <button *ngIf="searchControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="searchControl.setValue('')">
+        <input
+          matInput
+          [formControl]="searchControl"
+          type="text"
+          placeholder="Search by keywords..."
+        />
+        <button
+          *ngIf="searchControl.value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="searchControl.setValue('')"
+        >
           <mat-icon>close</mat-icon>
         </button>
         <mat-icon matPrefix>search</mat-icon>
       </mat-form-field>
+      <app-section-selector></app-section-selector>
     </div>
 
     <div class="right-section">

@@ -1,4 +1,4 @@
-import { CvData } from '../../models/cv.model';
+import { CvData, SelectableSection } from '../../models/cv.model';
 
 export interface CvState {
   basics: CvData['basics'] | null;
@@ -12,6 +12,7 @@ export interface CvState {
   sectionFilters: {
     [key in 'experience' | 'education' | 'skills']: boolean;
   };
+  selectedSections: SelectableSection;
 }
 
 export const initialCvState: CvState = {
@@ -28,4 +29,5 @@ export const initialCvState: CvState = {
     education: true,
     skills: true,
   },
+  selectedSections: 'all',
 };

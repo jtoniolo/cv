@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { CvData } from '../../models/cv.model';
+import { CvData, SelectableSection } from '../../models/cv.model';
 
 export const CvPageActions = createActionGroup({
   source: 'CV Page',
@@ -9,6 +9,9 @@ export const CvPageActions = createActionGroup({
     'Toggle Section Filter': props<{
       section: 'experience' | 'education' | 'skills';
       enabled: boolean;
+    }>(),
+    'Select Section': props<{
+      section: SelectableSection;
     }>(),
   },
 });

@@ -20,6 +20,12 @@ export const cvReducer = createReducer(
       [section]: enabled,
     },
   })),
+  on(CvPageActions.selectSection, (state, { section }) => {
+    return {
+      ...state,
+      selectedSections: section,
+    };
+  }),
   on(CvApiActions.cVLoadDataSuccess, (state, { data }) => {
     // Initialize all projects as expanded by default
     const expandedProjects: { [key: string]: boolean } = {};
