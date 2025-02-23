@@ -12,6 +12,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionSelectorComponent } from '../section-selector/section-selector.component';
 import { CvPageActions } from '../../../state';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { selectBasicsName } from '../../../state/cv/cv.selectors';
 
 @Component({
   selector: 'app-header',
@@ -35,6 +36,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 export class HeaderComponent {
   private readonly store = inject(Store);
   searchControl = new FormControl('');
+  name$ = this.store.select(selectBasicsName);
 
   constructor() {
     this.searchControl.valueChanges

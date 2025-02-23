@@ -51,6 +51,12 @@ export const selectSkills = createSelector(
   selectCvState,
   (state: CvState) => state.skills
 );
+
+export const selectBasicsName = createSelector(
+  selectBasics,
+  (basics) => basics?.name || ''
+);
+
 export const selectFilterTerm = createSelector(
   selectCvState,
   (state: CvState) => state.filterTerm

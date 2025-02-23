@@ -2,6 +2,12 @@ import { TimelineItem } from '@shared/components/timeline/timeline.models';
 
 export interface CvData {
   basics: {
+    name: string;
+    contact?: {
+      phone?: string;
+      email?: string;
+      city?: string;
+    };
     title: string;
     summary: string;
     highlights: string[];

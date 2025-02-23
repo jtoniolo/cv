@@ -5,8 +5,17 @@
   "properties": {
     "basics": {
       "type": "object",
-      "required": ["title", "summary", "highlights"],
+      "required": ["name", "title", "summary", "highlights"],
       "properties": {
+        "name": { "type": "string" },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "phone": { "type": "string" },
+            "email": { "type": "string" },
+            "city": { "type": "string" }
+          }
+        },
         "title": { "type": "string" },
         "summary": { "type": "string" },
         "highlights": {

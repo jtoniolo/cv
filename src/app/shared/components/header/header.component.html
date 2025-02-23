@@ -1,7 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="header-row">
     <div class="left-section">
-      <a mat-button routerLink="/" routerLinkActive="active">CV</a>
+      <a mat-button routerLink="/" routerLinkActive="active">
+        <span class="name">{{ name$ | async }}</span>
+      </a>
     </div>
 
     <div class="center-section">
