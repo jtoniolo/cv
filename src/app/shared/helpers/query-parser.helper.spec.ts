@@ -168,17 +168,37 @@ describe('QueryParserHelper', () => {
   });
 
   describe('processParentheses', () => {
-    it('should correctly process "(microservice OR .net) AND sql"', () => {
-      const tokens = ['(microservice', 'OR', '.net)', 'AND', 'sql'];
+    it('should group tokens based on parentheses', () => {
+      const tokens = ['(', 'microservice', 'OR', '.net', ')', 'AND', 'sql'];
       const result = processParentheses(tokens);
 
       expect(result).toEqual([
-        {
-          operator: 'OR',
-          terms: ['microservice', '.net'],
-        },
+        ['microservice', 'OR', '.net'],
+        ['AND'],
+        ['sql'],
+      ]);
+    });
+
+    it('should handle nested parentheses', () => {
+      const tokens = [
+        '(',
+        'angular',
         'AND',
-        'sql',
+        '(',
+        'typescript',
+        'OR',
+        'javascript',
+        ')',
+        ')',
+        'AND',
+        'testing',
+      ];
+      const result = processParentheses(tokens);
+
+      expect(result).toEqual([
+        ['angular', 'AND', '(', 'typescript', 'OR', 'javascript', ')'],
+        ['AND'],
+        ['testing'],
       ]);
     });
   });
