@@ -124,7 +124,7 @@ describe('QueryParserHelper', () => {
       });
     });
 
-    it('should parse parentheses with AND', () => {
+    it('should prioritize parentheses over AND/OR operations', () => {
       const result = parseSearchQuery('(microservice OR .net) AND sql');
       expect(result).toEqual({
         rawQuery: '(microservice OR .net) AND sql',
@@ -141,7 +141,7 @@ describe('QueryParserHelper', () => {
       });
     });
 
-    it('should parse nested parentheses', () => {
+    it('should prioritize nested parentheses in order of depth', () => {
       const result = parseSearchQuery(
         '(angular AND (typescript OR javascript)) AND testing'
       );
