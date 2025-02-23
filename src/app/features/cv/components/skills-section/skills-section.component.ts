@@ -7,7 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CvState } from '../../../../state/cv/cv.state';
-import { selectSkills } from '../../../../state';
+import { selectSkills, selectFilterTerm } from '../../../../state';
+import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 
 type ViewMode = 'grid' | 'list';
 
@@ -20,6 +21,7 @@ type ViewMode = 'grid' | 'list';
     MatChipsModule,
     MatButtonToggleModule,
     MatIconModule,
+    JsonSearchPipe,
   ],
   templateUrl: './skills-section.component.html',
   styleUrls: ['./skills-section.component.scss'],
@@ -27,6 +29,7 @@ type ViewMode = 'grid' | 'list';
 export class SkillsSectionComponent {
   private readonly store = inject(Store<CvState>);
   skills = toSignal(this.store.select(selectSkills));
+  filterTerm = toSignal(this.store.select(selectFilterTerm));
   viewMode = signal<ViewMode>('grid');
 
   toggleViewMode(mode: ViewMode) {

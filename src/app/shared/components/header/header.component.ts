@@ -37,11 +37,10 @@ export class HeaderComponent {
   searchControl = new FormControl('');
 
   constructor() {
-    this.searchControl.valueChanges.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe(term => {
-      this.store.dispatch(CvPageActions.setFilterTerm({ term: term || '' }));
-    });
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((term) => {
+        this.store.dispatch(CvPageActions.setFilterTerm({ term: term || '' }));
+      });
   }
 }

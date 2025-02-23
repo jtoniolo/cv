@@ -18,6 +18,7 @@
     <mat-card
       *ngFor="let category of skills()?.categories"
       class="skill-category"
+      [class.hidden]="!(category | jsonSearch : filterTerm())"
     >
       <mat-card-header>
         <mat-card-title>{{ category.name }}</mat-card-title>

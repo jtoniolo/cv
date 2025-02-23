@@ -6,10 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Project } from '../../../../models/cv.model';
 import { Store } from '@ngrx/store';
-import { CvState } from '../../../../state/cv/cv.state';
-import { CvPageActions } from '../../../../state';
+import { selectFilterTerm } from '../../../../state';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 
 @Component({
   selector: 'app-experience-item',
@@ -21,12 +21,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    JsonSearchPipe,
   ],
   templateUrl: './experience-item.component.html',
   styleUrls: ['./experience-item.component.scss'],
 })
 export class ExperienceItemComponent {
-  private readonly store = inject(Store<CvState>);
+  private readonly store = inject(Store);
+  filterTerm = toSignal(this.store.select(selectFilterTerm));
   projects = input<Project[]>([]);
   accordion = viewChild.required(MatAccordion);
 
