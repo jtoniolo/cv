@@ -61,3 +61,8 @@ export const selectFilterTerm = createSelector(
   selectCvState,
   (state: CvState) => state.filterTerm
 );
+
+export const selectParsedQuery = createSelector(
+  selectCvState,
+  (state) => state.searchQuery
+);

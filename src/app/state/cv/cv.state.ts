@@ -1,4 +1,5 @@
 import { CvData, SelectableSection } from '../../models/cv.model';
+import { ParsedSearchQuery } from '../../models/search-query.model';
 
 export interface CvState {
   basics: CvData['basics'] | null;
@@ -13,6 +14,7 @@ export interface CvState {
     [key in 'experience' | 'education' | 'skills']: boolean;
   };
   selectedSections: SelectableSection;
+  searchQuery: ParsedSearchQuery | null;
 }
 
 export const initialCvState: CvState = {
@@ -30,4 +32,5 @@ export const initialCvState: CvState = {
     skills: true,
   },
   selectedSections: 'all',
+  searchQuery: null,
 };

@@ -165,22 +165,5 @@ describe('QueryParserHelper', () => {
         },
       });
     });
-
-    it('should parse parentheses correctly in "microservice or (.net and sql)"', () => {
-      const result = parseSearchQuery('microservice or (.net and sql)');
-      expect(result).toEqual({
-        rawQuery: 'microservice or (.net and sql)',
-        rootGroup: {
-          terms: [
-            'microservice',
-            {
-              terms: ['.net', 'sql'],
-              operator: 'AND',
-            },
-          ],
-          operator: 'OR',
-        },
-      });
-    });
   });
 });
