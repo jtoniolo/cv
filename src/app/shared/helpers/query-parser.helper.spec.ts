@@ -1,4 +1,4 @@
-import { parseSearchQuery } from './query-parser.helper';
+import { parseSearchQuery, processParentheses } from './query-parser.helper';
 
 describe('QueryParserHelper', () => {
   describe('parseSearchQuery', () => {
@@ -124,7 +124,7 @@ describe('QueryParserHelper', () => {
       });
     });
 
-    it('should prioritize parentheses over AND/OR operations', () => {
+    it('should follow operator precedence (parentheses > AND > OR)', () => {
       const result = parseSearchQuery('(microservice OR .net) AND sql');
       expect(result).toEqual({
         rawQuery: '(microservice OR .net) AND sql',
@@ -141,7 +141,7 @@ describe('QueryParserHelper', () => {
       });
     });
 
-    it('should prioritize nested parentheses in order of depth', () => {
+    it('should follow nested operator precedence with multiple depths', () => {
       const result = parseSearchQuery(
         '(angular AND (typescript OR javascript)) AND testing'
       );
@@ -164,6 +164,22 @@ describe('QueryParserHelper', () => {
           operator: 'AND',
         },
       });
+    });
+  });
+
+  describe('processParentheses', () => {
+    it('should correctly process "(microservice OR .net) AND sql"', () => {
+      const tokens = ['(microservice', 'OR', '.net)', 'AND', 'sql'];
+      const result = processParentheses(tokens);
+
+      expect(result).toEqual([
+        {
+          operator: 'OR',
+          terms: ['microservice', '.net'],
+        },
+        'AND',
+        'sql',
+      ]);
     });
   });
 });
