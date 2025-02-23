@@ -13,7 +13,7 @@ export const cvReducer = createReducer(
   on(CvPageActions.setFilterTerm, (state, { term }) => ({
     ...state,
     filterTerm: term,
-    searchQuery: parseSearchQuery(term)
+    searchQuery: parseSearchQuery(term),
   })),
   on(CvPageActions.toggleSectionFilter, (state, { section, enabled }) => ({
     ...state,

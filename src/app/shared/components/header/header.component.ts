@@ -12,7 +12,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionSelectorComponent } from '../section-selector/section-selector.component';
 import { CvPageActions } from '../../../state';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { selectBasicsName, selectParsedQuery } from '../../../state/cv/cv.selectors';
+import {
+  selectBasicsName,
+  selectParsedQuery,
+} from '../../../state/cv/cv.selectors';
 
 @Component({
   selector: 'app-header',
