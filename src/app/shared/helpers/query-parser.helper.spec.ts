@@ -19,6 +19,17 @@ describe('QueryParserHelper', () => {
       });
     });
 
+    it('should parse multiple OR terms', () => {
+      const result = parseSearchQuery('angular react vue');
+      expect(result).toEqual({
+        rawQuery: 'angular react vue',
+        rootGroup: {
+          terms: ['angular', 'react', 'vue'],
+          operator: 'OR',
+        },
+      });
+    });
+
     it('should parse quoted terms', () => {
       const result = parseSearchQuery('"angular developer"');
       expect(result).toEqual({
@@ -30,12 +41,34 @@ describe('QueryParserHelper', () => {
       });
     });
 
-    it('should parse multiple OR terms', () => {
-      const result = parseSearchQuery('angular react vue');
+    it('should handle mixed quotes', () => {
+      const result = parseSearchQuery('"full stack" AND \'node.js\'');
       expect(result).toEqual({
-        rawQuery: 'angular react vue',
+        rawQuery: '"full stack" AND \'node.js\'',
         rootGroup: {
-          terms: ['angular', 'react', 'vue'],
+          terms: [
+            {
+              terms: ['full stack', 'node.js'],
+              operator: 'AND',
+            },
+          ],
+          operator: 'OR',
+        },
+      });
+    });
+
+    it('should handle case insensitivity', () => {
+      const result = parseSearchQuery('Angular and TypeScript OR React');
+      expect(result).toEqual({
+        rawQuery: 'Angular and TypeScript OR React',
+        rootGroup: {
+          terms: [
+            {
+              terms: ['Angular', 'TypeScript'],
+              operator: 'AND',
+            },
+            'React',
+          ],
           operator: 'OR',
         },
       });
@@ -68,6 +101,23 @@ describe('QueryParserHelper', () => {
               operator: 'AND',
             },
             'react',
+          ],
+          operator: 'OR',
+        },
+      });
+    });
+
+    it('should parse "microservice or .net and sql" correctly', () => {
+      const result = parseSearchQuery('microservice or .net and sql');
+      expect(result).toEqual({
+        rawQuery: 'microservice or .net and sql',
+        rootGroup: {
+          terms: [
+            'microservice',
+            {
+              terms: ['.net', 'sql'],
+              operator: 'AND',
+            },
           ],
           operator: 'OR',
         },
@@ -112,56 +162,6 @@ describe('QueryParserHelper', () => {
             'testing',
           ],
           operator: 'AND',
-        },
-      });
-    });
-
-    it('should handle case insensitivity', () => {
-      const result = parseSearchQuery('Angular and TypeScript OR React');
-      expect(result).toEqual({
-        rawQuery: 'Angular and TypeScript OR React',
-        rootGroup: {
-          terms: [
-            {
-              terms: ['Angular', 'TypeScript'],
-              operator: 'AND',
-            },
-            'React',
-          ],
-          operator: 'OR',
-        },
-      });
-    });
-
-    it('should handle mixed quotes', () => {
-      const result = parseSearchQuery('"full stack" AND \'node.js\'');
-      expect(result).toEqual({
-        rawQuery: '"full stack" AND \'node.js\'',
-        rootGroup: {
-          terms: [
-            {
-              terms: ['full stack', 'node.js'],
-              operator: 'AND',
-            },
-          ],
-          operator: 'OR',
-        },
-      });
-    });
-
-    it('should parse "microservice or .net and sql" correctly', () => {
-      const result = parseSearchQuery('microservice or .net and sql');
-      expect(result).toEqual({
-        rawQuery: 'microservice or .net and sql',
-        rootGroup: {
-          terms: [
-            'microservice',
-            {
-              terms: ['.net', 'sql'],
-              operator: 'AND',
-            },
-          ],
-          operator: 'OR',
         },
       });
     });
