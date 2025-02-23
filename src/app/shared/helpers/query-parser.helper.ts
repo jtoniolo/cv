@@ -1,72 +1,160 @@
 import {
   ParsedSearchQuery,
   SearchTermGroup,
+  LogicalOperator,
 } from '@app/models/search-query.model';
 
-interface SearchToken {
-  type: 'TERM' | 'OPERATOR' | 'GROUP';
-  value: string;
-  group?: SearchToken[];
-}
-
-function extractTokens(query: string): SearchToken[] {
-  const regex = /'[^']*'|"[^"]*"|\S+/g;
-  return Array.from(query.matchAll(regex), (m) => {
-    const value = m[0];
-    const term =
-      value.startsWith('"') || value.startsWith("'")
-        ? value.slice(1, -1)
-        : value;
-
-    const upperTerm = term.toUpperCase();
-    return {
-      type: upperTerm === 'AND' || upperTerm === 'OR' ? 'OPERATOR' : 'TERM',
-      value: term,
-    };
-  });
-}
-
-function groupTerms(tokens: SearchToken[]): (string | SearchTermGroup)[] {
-  const terms: (string | SearchTermGroup)[] = [];
-
-  for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i];
-
+class TokenParser {
+  parse(query: string): ParsedSearchQuery {
+    const tokens = this.tokenize(query);
+    const groupedTokens = this.groupTerms(tokens);
+    // If the query starts with '(' then use the grouped token as rootGroup; otherwise wrap in an OR group
+    let rootGroup: SearchTermGroup;
     if (
-      token.type === 'OPERATOR' &&
-      token.value.toUpperCase() === 'AND' &&
-      i > 0 &&
-      i < tokens.length - 1
+      groupedTokens.length === 1 &&
+      typeof groupedTokens[0] === 'object' &&
+      query.trim().startsWith('(')
     ) {
-      const prevTerm = terms.pop() as string | SearchTermGroup;
-      const nextTerm = tokens[i + 1].value;
-
-      const group: SearchTermGroup = {
-        operator: 'AND',
-        terms: [prevTerm, nextTerm],
+      rootGroup = groupedTokens[0] as SearchTermGroup;
+    } else {
+      rootGroup = {
+        operator: 'OR' as const,
+        terms: groupedTokens,
       };
-      terms.push(group);
-      i++;
-    } else if (token.type === 'TERM' || token.value.toUpperCase() !== 'OR') {
-      terms.push(token.value);
     }
+    return {
+      rawQuery: query,
+      rootGroup,
+    };
   }
 
-  return terms;
+  private tokenize(query: string): (string | SearchTermGroup)[] {
+    const tokens: (string | SearchTermGroup)[] = [];
+    let word = '';
+    let i = 0;
+    while (i < query.length) {
+      const char = query[i];
+      if (char === '(') {
+        if (word.trim() !== '') {
+          tokens.push(...this.splitWord(word));
+          word = '';
+        }
+        const result = this.tokenizeGroup(query, i + 1);
+        tokens.push(result.group);
+        i = result.newIndex;
+        continue;
+      } else if (char === ')') {
+        if (word.trim() !== '') {
+          tokens.push(...this.splitWord(word));
+          word = '';
+        }
+        i++; // consume ')'
+        continue; // return to allow outer call to handle closing
+      } else if (/\s/.test(char)) {
+        if (word.trim() !== '') {
+          tokens.push(...this.splitWord(word));
+          word = '';
+        }
+        i++;
+        continue;
+      } else {
+        word += char;
+        i++;
+      }
+    }
+    if (word.trim() !== '') {
+      tokens.push(...this.splitWord(word));
+    }
+    return tokens;
+  }
+
+  private tokenizeGroup(
+    query: string,
+    startIndex: number
+  ): { group: SearchTermGroup; newIndex: number } {
+    const subTokens: (string | SearchTermGroup)[] = [];
+    let word = '';
+    let i = startIndex;
+    while (i < query.length) {
+      const char = query[i];
+      if (char === '(') {
+        if (word.trim() !== '') {
+          subTokens.push(...this.splitWord(word));
+          word = '';
+        }
+        const result = this.tokenizeGroup(query, i + 1);
+        subTokens.push(result.group);
+        i = result.newIndex;
+        continue;
+      } else if (char === ')') {
+        if (word.trim() !== '') {
+          subTokens.push(...this.splitWord(word));
+          word = '';
+        }
+        i++; // consume ')'
+        break;
+      } else if (/\s/.test(char)) {
+        if (word.trim() !== '') {
+          subTokens.push(...this.splitWord(word));
+          word = '';
+        }
+        i++;
+        continue;
+      } else {
+        word += char;
+        i++;
+      }
+    }
+    if (word.trim() !== '') {
+      subTokens.push(...this.splitWord(word));
+    }
+    const grouped = this.groupTerms(subTokens);
+    return { group: { operator: 'OR' as const, terms: grouped }, newIndex: i };
+  }
+
+  private splitWord(word: string): string[] {
+    const trimmed = word.trim();
+    if (trimmed.toUpperCase() === 'OR') return [];
+    return [
+      (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+      (trimmed.startsWith("'") && trimmed.endsWith("'"))
+        ? trimmed.slice(1, -1)
+        : trimmed,
+    ];
+  }
+
+  private groupTerms(
+    tokens: (string | SearchTermGroup)[]
+  ): (string | SearchTermGroup)[] {
+    const result: (string | SearchTermGroup)[] = [];
+    let i = 0;
+    while (i < tokens.length) {
+      const current = tokens[i];
+      if (
+        typeof current === 'string' &&
+        current.toUpperCase() === 'AND' &&
+        i > 0 &&
+        i < tokens.length - 1
+      ) {
+        const prev = result.pop()!;
+        const next = tokens[i + 1];
+        result.push({
+          operator: 'AND' as const,
+          terms: [prev, next],
+        });
+        i += 2;
+      } else {
+        result.push(current);
+        i++;
+      }
+    }
+    return result;
+  }
 }
 
+const parser = new TokenParser();
+
 export function parseSearchQuery(query?: string): ParsedSearchQuery | null {
-  if (!query?.trim()) return null;
-
-  const trimmedQuery = query.trim();
-  const tokens = extractTokens(trimmedQuery);
-  const terms = groupTerms(tokens);
-
-  return {
-    rawQuery: trimmedQuery,
-    rootGroup: {
-      operator: 'OR',
-      terms,
-    },
-  };
+  if (!query || !query.trim()) return null;
+  return parser.parse(query.trim());
 }
