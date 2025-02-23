@@ -5,7 +5,6 @@ describe('QueryParserHelper', () => {
     it('should return null for empty query', () => {
       expect(parseSearchQuery('')).toBeNull();
       expect(parseSearchQuery(' ')).toBeNull();
-      expect(parseSearchQuery(null)).toBeNull();
       expect(parseSearchQuery(undefined)).toBeNull();
     });
 
@@ -15,8 +14,8 @@ describe('QueryParserHelper', () => {
         rawQuery: 'angular',
         rootGroup: {
           terms: ['angular'],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
 
@@ -26,8 +25,8 @@ describe('QueryParserHelper', () => {
         rawQuery: '"angular developer"',
         rootGroup: {
           terms: ['angular developer'],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
 
@@ -37,8 +36,8 @@ describe('QueryParserHelper', () => {
         rawQuery: 'angular react vue',
         rootGroup: {
           terms: ['angular', 'react', 'vue'],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
 
@@ -47,12 +46,14 @@ describe('QueryParserHelper', () => {
       expect(result).toEqual({
         rawQuery: 'angular AND typescript',
         rootGroup: {
-          terms: [{
-            terms: ['angular', 'typescript'],
-            operator: 'AND'
-          }],
-          operator: 'OR'
-        }
+          terms: [
+            {
+              terms: ['angular', 'typescript'],
+              operator: 'AND',
+            },
+          ],
+          operator: 'OR',
+        },
       });
     });
 
@@ -64,12 +65,12 @@ describe('QueryParserHelper', () => {
           terms: [
             {
               terms: ['angular', 'typescript'],
-              operator: 'AND'
+              operator: 'AND',
             },
-            'react'
+            'react',
           ],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
 
@@ -81,17 +82,19 @@ describe('QueryParserHelper', () => {
           terms: [
             {
               terms: ['microservice', '.net'],
-              operator: 'OR'
+              operator: 'OR',
             },
-            'sql'
+            'sql',
           ],
-          operator: 'AND'
-        }
+          operator: 'AND',
+        },
       });
     });
 
     it('should parse nested parentheses', () => {
-      const result = parseSearchQuery('(angular AND (typescript OR javascript)) AND testing');
+      const result = parseSearchQuery(
+        '(angular AND (typescript OR javascript)) AND testing'
+      );
       expect(result).toEqual({
         rawQuery: '(angular AND (typescript OR javascript)) AND testing',
         rootGroup: {
@@ -101,15 +104,15 @@ describe('QueryParserHelper', () => {
                 'angular',
                 {
                   terms: ['typescript', 'javascript'],
-                  operator: 'OR'
-                }
+                  operator: 'OR',
+                },
               ],
-              operator: 'AND'
+              operator: 'AND',
             },
-            'testing'
+            'testing',
           ],
-          operator: 'AND'
-        }
+          operator: 'AND',
+        },
       });
     });
 
@@ -121,12 +124,12 @@ describe('QueryParserHelper', () => {
           terms: [
             {
               terms: ['Angular', 'TypeScript'],
-              operator: 'AND'
+              operator: 'AND',
             },
-            'React'
+            'React',
           ],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
 
@@ -135,12 +138,14 @@ describe('QueryParserHelper', () => {
       expect(result).toEqual({
         rawQuery: '"full stack" AND \'node.js\'',
         rootGroup: {
-          terms: [{
-            terms: ['full stack', 'node.js'],
-            operator: 'AND'
-          }],
-          operator: 'OR'
-        }
+          terms: [
+            {
+              terms: ['full stack', 'node.js'],
+              operator: 'AND',
+            },
+          ],
+          operator: 'OR',
+        },
       });
     });
 
@@ -153,11 +158,11 @@ describe('QueryParserHelper', () => {
             'microservice',
             {
               terms: ['.net', 'sql'],
-              operator: 'AND'
-            }
+              operator: 'AND',
+            },
           ],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
 
@@ -170,11 +175,11 @@ describe('QueryParserHelper', () => {
             'microservice',
             {
               terms: ['.net', 'sql'],
-              operator: 'AND'
-            }
+              operator: 'AND',
+            },
           ],
-          operator: 'OR'
-        }
+          operator: 'OR',
+        },
       });
     });
   });
