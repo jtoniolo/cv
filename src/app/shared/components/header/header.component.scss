@@ -1,8 +1,23 @@
+.mat-toolbar.mat-primary {
+  padding: 8px 0;
+  height: auto;
+  min-height: 64px;
+}
+
 .header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  height: 64px; /* Standard Material toolbar height */
+}
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .left-section {
@@ -16,6 +31,14 @@
   justify-content: center;
   gap: 1rem;
   max-width: 800px;
+
+  .search-field {
+    ::ng-deep {
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
+    }
+  }
 }
 
 .right-section {
@@ -25,15 +48,20 @@
 }
 
 .search-field {
-  width: 100%;
+  min-width: 200px;
+  margin: 0;
 }
 
 @media (max-width: 600px) {
+  .header-row {
+    height: 56px; /* Mobile toolbar height */
+  }
+
   .center-section {
     margin: 0 8px;
   }
 
   .search-field {
-    width: 150px;
+    min-width: 150px;
   }
 }

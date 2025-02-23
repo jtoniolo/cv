@@ -11,6 +11,11 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  padding-top: 80px; /* Toolbar height + extra space for form field */
+
+  @media (max-width: 600px) {
+    padding-top: 72px; /* Reduced height for mobile */
+  }
 
   nav {
     position: sticky;
