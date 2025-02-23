@@ -1,4 +1,4 @@
-import { parseSearchQuery, processParentheses } from './query-parser.helper';
+import { parseSearchQuery } from './query-parser.helper';
 
 describe('QueryParserHelper', () => {
   describe('parseSearchQuery', () => {
@@ -164,42 +164,6 @@ describe('QueryParserHelper', () => {
           operator: 'AND',
         },
       });
-    });
-  });
-
-  describe('processParentheses', () => {
-    it('should group tokens based on parentheses', () => {
-      const tokens = ['(', 'microservice', 'OR', '.net', ')', 'AND', 'sql'];
-      const result = processParentheses(tokens);
-
-      expect(result).toEqual([
-        ['microservice', 'OR', '.net'],
-        ['AND'],
-        ['sql'],
-      ]);
-    });
-
-    it('should handle nested parentheses', () => {
-      const tokens = [
-        '(',
-        'angular',
-        'AND',
-        '(',
-        'typescript',
-        'OR',
-        'javascript',
-        ')',
-        ')',
-        'AND',
-        'testing',
-      ];
-      const result = processParentheses(tokens);
-
-      expect(result).toEqual([
-        ['angular', 'AND', '(', 'typescript', 'OR', 'javascript', ')'],
-        ['AND'],
-        ['testing'],
-      ]);
     });
   });
 });
