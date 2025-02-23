@@ -1,46 +1,47 @@
-import {
-  ParsedSearchQuery,
-  SearchTermGroup,
-} from '@app/models/search-query.model';
+import { ParsedSearchQuery, SearchTermGroup } from '@app/models/search-query.model';
 
 /**
- * Groups tokens into arrays based on parentheses
- * Returns array of token arrays, where each array represents either:
- * - A parenthetical group with the parentheses removed
- * - A single token
+ * Groups tokens into arrays based on parentheses.
+ * Each array represents either a parenthetical group or a single token.
  */
 export function processParentheses(tokens: string[]): string[][] {
   const result: string[][] = [];
+  let depth = 0;
   let currentGroup: string[] = [];
 
   for (let i = 0; i < tokens.length; i++) {
-    if (tokens[i].startsWith('(')) {
-      // Start collecting a new group
-      let depth = 1;
-      currentGroup = [tokens[i].slice(1)]; // Remove opening parenthesis
-
-      while (++i < tokens.length && depth > 0) {
-        if (tokens[i].includes('(')) depth++;
-        if (tokens[i].includes(')')) depth--;
-
-        if (depth === 0) {
-          // Remove closing parenthesis and add to group
-          currentGroup.push(tokens[i].slice(0, -1));
-        } else {
-          currentGroup.push(tokens[i]);
-        }
+    if (tokens[i] === '(') {
+      if (depth === 0) {
+        // Start new group
+        currentGroup = [];
+      } else {
+        // Add nested parenthesis to current group
+        currentGroup.push(tokens[i]);
       }
-
-      // Add completed group
-      result.push(currentGroup);
-      currentGroup = [];
-      i--; // Adjust for loop increment
-    } else if (!tokens[i].includes(')')) {
-      // Add single token as its own group
-      result.push([tokens[i]]);
+      depth++;
+    } 
+    else if (tokens[i] === ')') {
+      depth--;
+      if (depth === 0) {
+        // End current group
+        result.push(currentGroup);
+        currentGroup = [];
+      } else {
+        // Add nested closing parenthesis to group
+        currentGroup.push(tokens[i]);
+      }
+    }
+    else {
+      if (depth > 0) {
+        // Add to current group
+        currentGroup.push(tokens[i]);
+      } else {
+        // Standalone token
+        result.push([tokens[i]]);
+      }
     }
   }
-
+  
   return result;
 }
 
