@@ -93,6 +93,16 @@ class TokenParser {
 
   private createRootGroup(tokens: TokenOrGroup[]): SearchTermGroup {
     const processed = this.groupTerms(tokens);
+
+    // If we have a single AND group at the root, return it directly
+    if (processed.length === 1 && typeof processed[0] === 'object') {
+      const group = processed[0] as SearchTermGroup;
+      if (group.operator === 'AND') {
+        return group;
+      }
+    }
+
+    // Otherwise wrap in OR group
     return {
       operator: 'OR',
       terms: processed,
