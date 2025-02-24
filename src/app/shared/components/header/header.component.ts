@@ -20,6 +20,7 @@ import {
 import { parseSearchQuery } from '../../helpers/query-parser.helper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -36,6 +37,7 @@ import { MatIconRegistry } from '@angular/material/icon';
     RouterLink,
     RouterLinkActive,
     SectionSelectorComponent,
+    MatTooltipModule,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
@@ -52,12 +54,19 @@ export class HeaderComponent {
   linkedinUrl$ = this.store
     .select(selectBasics)
     .pipe(map((basics) => basics?.contact?.linkedin));
+  githubUrl$ = this.store
+    .select(selectBasics)
+    .pipe(map((basics) => basics?.contact?.github));
   parsedQuery$ = this.store.select(selectParsedQuery);
 
   constructor() {
     this.iconRegistry.addSvgIcon(
       'linkedin',
       this.sanitizer.bypassSecurityTrustResourceUrl('/icons/linkedin.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'github',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/icons/github.svg')
     );
 
     this.searchControl.valueChanges

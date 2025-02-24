@@ -1,7 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="header-row">
     <div class="left-section">
-      <a mat-button routerLink="/" routerLinkActive="active">
+      <a
+        mat-button
+        routerLink="/"
+        routerLinkActive="active"
+        matTooltip="Go to home"
+      >
         <span class="name">{{ name$ | async }}</span>
       </a>
     </div>
@@ -21,6 +26,7 @@
           mat-icon-button
           aria-label="Clear"
           (click)="searchControl.setValue('')"
+          matTooltip="Clear search"
         >
           <mat-icon>close</mat-icon>
         </button>
@@ -34,13 +40,39 @@
     </div>
 
     <div class="right-section">
-      <a *ngIf="linkedinUrl$ | async" [href]="linkedinUrl$ | async" target="_blank" mat-icon-button aria-label="Open LinkedIn profile">
+      <a
+        *ngIf="linkedinUrl$ | async"
+        [href]="linkedinUrl$ | async"
+        target="_blank"
+        mat-icon-button
+        matTooltip="Visit my LinkedIn profile"
+        aria-label="Open LinkedIn profile"
+      >
         <mat-icon svgIcon="linkedin"></mat-icon>
       </a>
-      <button mat-icon-button aria-label="Export PDF">
+      <a
+        *ngIf="githubUrl$ | async"
+        [href]="githubUrl$ | async"
+        target="_blank"
+        mat-icon-button
+        matTooltip="Visit my GitHub profile"
+        aria-label="Open GitHub profile"
+      >
+        <mat-icon svgIcon="github"></mat-icon>
+      </a>
+      <button
+        mat-icon-button
+        aria-label="Export PDF"
+        matTooltip="Export as PDF (coming soon)"
+        disabled
+      >
         <mat-icon>picture_as_pdf</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Toggle theme">
+      <button
+        mat-icon-button
+        aria-label="Toggle theme"
+        matTooltip="Toggle dark mode"
+      >
         <mat-icon>dark_mode</mat-icon>
       </button>
     </div>

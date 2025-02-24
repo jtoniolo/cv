@@ -5,7 +5,8 @@ export const CV_DATA: CvData = {
   "basics": {
     "name": "Jeffrey Toniolo",
     "contact": {
-      "linkedin": "https://www.linkedin.com/in/jefftoniolo/"
+      "linkedin": "https://www.linkedin.com/in/jefftoniolo/",
+      "github": "https://github.com/jtoniolo"
     },
     "title": "Senior Full Stack Developer",
     "summary": "Seasoned professional adept at building and supporting top-tier applications in the not-for-profit; financial and oil and gas industries. Rapidly troubleshooting issues using a logical and systematic approach. Experienced mentor of technical staff, providing guidance and encouragement. Expert implementer of systems and streamlined processes delivering major efficiency gains and cost savings.",
