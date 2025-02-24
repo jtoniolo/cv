@@ -7,6 +7,8 @@ export interface CvData {
       phone?: string;
       email?: string;
       city?: string;
+      linkedin?: string;
+      github?: string;
     };
     title: string;
     summary: string;
