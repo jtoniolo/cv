@@ -34,6 +34,9 @@
     </div>
 
     <div class="right-section">
+      <a *ngIf="linkedinUrl$ | async" [href]="linkedinUrl$ | async" target="_blank" mat-icon-button aria-label="Open LinkedIn profile">
+        <mat-icon svgIcon="linkedin"></mat-icon>
+      </a>
       <button mat-icon-button aria-label="Export PDF">
         <mat-icon>picture_as_pdf</mat-icon>
       </button>

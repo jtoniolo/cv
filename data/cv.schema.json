@@ -13,7 +13,9 @@
           "properties": {
             "phone": { "type": "string" },
             "email": { "type": "string" },
-            "city": { "type": "string" }
+            "city": { "type": "string" },
+            "linkedin": { "type": "string" },
+            "github": { "type": "string" }
           }
         },
         "title": { "type": "string" },
@@ -39,7 +41,7 @@
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["title", "startDate", "endDate", "responsibilities"],
+              "required": ["title", "startDate", "endDate"],
               "properties": {
                 "title": { "type": "string" },
                 "startDate": { "type": "string", "format": "date" },
@@ -53,7 +55,7 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "required": ["name", "details"],
+                    "required": ["name"],
                     "properties": {
                       "name": { "type": "string" },
                       "role": { "type": "string" },

@@ -11,12 +11,15 @@ import { Store } from '@ngrx/store';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionSelectorComponent } from '../section-selector/section-selector.component';
 import { CvPageActions } from '../../../state';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import {
   selectBasicsName,
   selectParsedQuery,
+  selectBasics,
 } from '../../../state/cv/cv.selectors';
 import { parseSearchQuery } from '../../helpers/query-parser.helper';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -39,11 +42,24 @@ import { parseSearchQuery } from '../../helpers/query-parser.helper';
 })
 export class HeaderComponent {
   private readonly store = inject(Store);
+  private readonly iconRegistry = inject(MatIconRegistry);
+  private readonly sanitizer = inject(DomSanitizer);
+
   searchControl = new FormControl<string>('');
-  name$ = this.store.select(selectBasicsName);
+  name$ = this.store
+    .select(selectBasics)
+    .pipe(map((basics) => basics?.name ?? ''));
+  linkedinUrl$ = this.store
+    .select(selectBasics)
+    .pipe(map((basics) => basics?.contact?.linkedin));
   parsedQuery$ = this.store.select(selectParsedQuery);
 
   constructor() {
+    this.iconRegistry.addSvgIcon(
+      'linkedin',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/icons/linkedin.svg')
+    );
+
     this.searchControl.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((value) => {

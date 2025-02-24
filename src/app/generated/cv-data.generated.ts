@@ -1,10 +1,11 @@
-{
+// This file is auto-generated. Do not edit directly.
+import { CvData } from '../models/cv.model';
+
+export const CV_DATA: CvData = {
   "basics": {
     "name": "Jeffrey Toniolo",
     "contact": {
-      "phone": "6135551234",
-      "email": "info@toniolo.ca",
-      "city": "Kingston, Ontario, Canada"
+      "linkedin": "https://www.linkedin.com/in/jefftoniolo/"
     },
     "title": "Senior Full Stack Developer",
     "summary": "Seasoned professional adept at building and supporting top-tier applications in the not-for-profit; financial and oil and gas industries. Rapidly troubleshooting issues using a logical and systematic approach. Experienced mentor of technical staff, providing guidance and encouragement. Expert implementer of systems and streamlined processes delivering major efficiency gains and cost savings.",
@@ -42,7 +43,11 @@
               "name": "Caribbean Managed Services Project",
               "role": "Lead Developer for two Caribbean government clients, leading a team of two other developers",
               "responsibilities": "Oversaw maintenance, support, and enhancements for two applications covering Beneficial Ownership Reporting and Economic Substance Reporting. Provided support and maintenance for a collection of multitenant, multi-tier web applications and Microservices. Designed and developed bug fixes and enhancements per client requests. Implemented structured logging using Serilog and Application Insights to improve traceability. Assisted in the design of security architecture improvements, evaluating various proposed options with the goal of implementing Web Application Firewall in a cost-effective manner.",
-              "technologies": ["Angular", "ASP.NET Core", "SQL Server"],
+              "technologies": [
+                "Angular",
+                "ASP.NET Core",
+                "SQL Server"
+              ],
               "challenges": "Faced a lack of knowledge transfer and limited resources. Overcame these challenges through effective use of tools, extensive troubleshooting experience, and efficient time management.",
               "achievements": "Successfully eliminated maintenance, support, and enhancement backlog. Received awards for excellence in contributions.",
               "keywords": [
@@ -79,17 +84,35 @@
               "name": "RAG IP Project",
               "role": "Developer",
               "responsibilities": "Cleaned up a RAG app built in Python and React. Converted the API from an ad-hoc structure to a proper RESTful API following development best practices.",
-              "technologies": ["Python", "React", "Azure OpenAI"],
+              "technologies": [
+                "Python",
+                "React",
+                "Azure OpenAI"
+              ],
               "achievements": "Refactored the API to comply with the RESTful pattern, resulting in a more standardized and maintainable application. Collaborated with another developer to update the React UI in parallel.",
-              "keywords": ["Python", "React", "Azure OpenAI", "REST API"]
+              "keywords": [
+                "Python",
+                "React",
+                "Azure OpenAI",
+                "REST API"
+              ]
             },
             {
               "name": "Athlete Whereabouts Reporting App",
               "role": "Frontend Developer",
               "responsibilities": "Helped build a UI refresh for the application using Angular, Angular Material, and NgRx.",
-              "technologies": ["Angular", "Angular Material", "NgRx"],
+              "technologies": [
+                "Angular",
+                "Angular Material",
+                "NgRx"
+              ],
               "challenges": "Faced a lack of clear requirements and documentation for the first version of the app, which was built by a different company. Successfully reverse-engineered the functionality by analyzing the code and simulating its use.",
-              "keywords": ["Angular", "Angular Material", "NgRx", "UI/UX"]
+              "keywords": [
+                "Angular",
+                "Angular Material",
+                "NgRx",
+                "UI/UX"
+              ]
             }
           ],
           "keywords": [
@@ -138,7 +161,13 @@
             "Developed a monitoring tool for MS Groove Databridge servers",
             "Development of changes to Windows 7 OSD in SCCM 2007"
           ],
-          "keywords": ["C#", "VB.Net", "MS SQL", "SCCM", "Windows OSD"]
+          "keywords": [
+            "C#",
+            "VB.Net",
+            "MS SQL",
+            "SCCM",
+            "Windows OSD"
+          ]
         }
       ]
     },
@@ -152,7 +181,11 @@
           "responsibilities": [
             "Delivered desktop support and services to clients using remote takeover technology and in person"
           ],
-          "keywords": ["desktop support", "remote support", "technical support"]
+          "keywords": [
+            "desktop support",
+            "remote support",
+            "technical support"
+          ]
         }
       ]
     },
@@ -162,7 +195,7 @@
         {
           "title": "Technical Lead, Desktop Support",
           "startDate": "2007-01-01",
-          "endDate": "2009-06-31",
+          "endDate": "2009-06-30",
           "responsibilities": [
             "Developed a Visual Basic.Net and MS SQL 2005-based system for HR, Finance and IT records integration",
             "Developed inventory tool using MS Excel and VBA with MS SQL backend",
@@ -200,30 +233,52 @@
     {
       "degree": "Computer Engineering Technology Diploma",
       "institution": "Seneca College, Toronto, Ontario",
-      "keywords": ["computer engineering", "technology", "diploma"]
+      "keywords": [
+        "computer engineering",
+        "technology",
+        "diploma"
+      ]
     },
     {
       "degree": "High School Diploma",
       "institution": "École Secondaire Saint Charles Garnier, Whitby, Ontario",
-      "keywords": ["high school", "bilingual education"]
+      "keywords": [
+        "high school",
+        "bilingual education"
+      ]
     }
   ],
   "certifications": [
     {
       "name": "Microsoft Dynamics CRM 2013 Application",
-      "keywords": ["CRM", "Microsoft", "Dynamics"]
+      "keywords": [
+        "CRM",
+        "Microsoft",
+        "Dynamics"
+      ]
     },
     {
       "name": "Microsoft Dynamics CRM 2011 Application/Customization and Configuration/Deployment",
-      "keywords": ["CRM", "Microsoft", "Dynamics", "deployment"]
+      "keywords": [
+        "CRM",
+        "Microsoft",
+        "Dynamics",
+        "deployment"
+      ]
     },
     {
       "name": "Administering Microsoft SQL Server 2012 Databases",
-      "keywords": ["SQL Server", "database administration"]
+      "keywords": [
+        "SQL Server",
+        "database administration"
+      ]
     },
     {
       "name": "ITIL Foundation Certificate IT Service Management",
-      "keywords": ["ITIL", "service management"]
+      "keywords": [
+        "ITIL",
+        "service management"
+      ]
     }
   ],
   "skills": {
@@ -256,7 +311,12 @@
           "Sandcastle",
           "TFS (on premise & online)"
         ],
-        "keywords": ["IDE", "database tools", "SDK", "source control"]
+        "keywords": [
+          "IDE",
+          "database tools",
+          "SDK",
+          "source control"
+        ]
       },
       {
         "name": "Languages",
@@ -269,8 +329,13 @@
           "VB Script",
           "VBA"
         ],
-        "keywords": ["programming", "scripting", "web development", "database"]
+        "keywords": [
+          "programming",
+          "scripting",
+          "web development",
+          "database"
+        ]
       }
     ]
   }
-}
+} as const;
