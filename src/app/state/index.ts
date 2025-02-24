@@ -17,3 +17,4 @@ export const selectSkills = Selectors.selectSkills;
 export const selectCertifications = Selectors.selectCertifications;
 export const selectSelectedSections = Selectors.selectSelectedSections;
 export const selectFilterTerm = Selectors.selectFilterTerm;
+export const selectParsedQuery = Selectors.selectParsedQuery;

@@ -8,7 +8,7 @@ import { CvState } from '../../../../state/cv/cv.state';
 import {
   selectEducation,
   selectCertifications,
-  selectFilterTerm,
+  selectParsedQuery,
 } from '../../../../state';
 import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 
@@ -23,5 +23,5 @@ export class EducationSectionComponent {
   private readonly store = inject(Store<CvState>);
   education = toSignal(this.store.select(selectEducation));
   certifications = toSignal(this.store.select(selectCertifications));
-  filterTerm = toSignal(this.store.select(selectFilterTerm));
+  filterTerm = toSignal(this.store.select(selectParsedQuery));
 }

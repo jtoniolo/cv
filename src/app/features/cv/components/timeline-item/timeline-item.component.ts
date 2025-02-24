@@ -5,7 +5,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { Position } from '../../../../models/cv.model';
 import { ExperienceItemComponent } from '../experience-item/experience-item.component';
 import { Store } from '@ngrx/store';
-import { selectFilterTerm } from '../../../../state';
+import { selectParsedQuery } from '../../../../state';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 
@@ -24,7 +24,7 @@ import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 })
 export class TimelineItemComponent {
   private readonly store = inject(Store);
-  filterTerm = toSignal(this.store.select(selectFilterTerm));
+  filterTerm = toSignal(this.store.select(selectParsedQuery));
 
   position = input.required<Position>();
   companyName = input.required<string>();

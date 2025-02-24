@@ -16,6 +16,7 @@ import {
   selectBasicsName,
   selectParsedQuery,
 } from '../../../state/cv/cv.selectors';
+import { parseSearchQuery } from '../../helpers/query-parser.helper';
 
 @Component({
   selector: 'app-header',
@@ -38,15 +39,25 @@ import {
 })
 export class HeaderComponent {
   private readonly store = inject(Store);
-  searchControl = new FormControl('');
+  searchControl = new FormControl<string>('');
   name$ = this.store.select(selectBasicsName);
   parsedQuery$ = this.store.select(selectParsedQuery);
 
   constructor() {
     this.searchControl.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe((term) => {
-        this.store.dispatch(CvPageActions.setFilterTerm({ term: term || '' }));
+      .subscribe((value) => {
+        const term = value ?? '';
+        try {
+          const parsedQuery = parseSearchQuery(term);
+          this.store.dispatch(
+            CvPageActions.setFilterTerm({ term, parsedQuery })
+          );
+        } catch (error) {
+          this.store.dispatch(
+            CvPageActions.setFilterTerm({ term, parsedQuery: null })
+          );
+        }
       });
   }
 }

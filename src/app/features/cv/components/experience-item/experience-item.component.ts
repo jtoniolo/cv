@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Project } from '../../../../models/cv.model';
 import { Store } from '@ngrx/store';
-import { selectFilterTerm } from '../../../../state';
+import { selectParsedQuery } from '../../../../state';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
@@ -28,7 +28,7 @@ import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 })
 export class ExperienceItemComponent {
   private readonly store = inject(Store);
-  filterTerm = toSignal(this.store.select(selectFilterTerm));
+  filterTerm = toSignal(this.store.select(selectParsedQuery));
   projects = input<Project[]>([]);
   accordion = viewChild.required(MatAccordion);
 

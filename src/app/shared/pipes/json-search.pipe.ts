@@ -1,17 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { ParsedSearchQuery } from '@app/models/search-query.model';
+import { evaluateSearchQuery } from '../helpers/search-evaluator.helper';
 
 @Pipe({
   name: 'jsonSearch',
   standalone: true,
 })
 export class JsonSearchPipe implements PipeTransform {
-  transform(value: any, searchTerm?: string): boolean {
-    if (!searchTerm) return true;
-    if (!value) return false;
-
-    const term = searchTerm.toLowerCase();
-    const jsonString = JSON.stringify(value).toLowerCase();
-
-    return jsonString.includes(term);
+  transform(value: any, query: ParsedSearchQuery | null): boolean {
+    return evaluateSearchQuery(value, query);
   }
 }
