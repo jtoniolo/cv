@@ -200,6 +200,20 @@ class TokenParser {
 // Single instance for all parsing operations
 const parser = new TokenParser();
 
+// Add this helper function
+function hasNestedParentheses(query: string): boolean {
+  let depth = 0;
+  for (const char of query) {
+    if (char === '(') {
+      depth++;
+      if (depth > 1) return true;
+    } else if (char === ')') {
+      depth--;
+    }
+  }
+  return false;
+}
+
 /**
  * Public interface for parsing search queries. Handles empty/null input gracefully
  * and provides a structured format for search operations.
@@ -213,5 +227,11 @@ const parser = new TokenParser();
  */
 export function parseSearchQuery(query?: string): ParsedSearchQuery | null {
   if (!query || !query.trim()) return null;
+
+  // Check for nested parentheses before proceeding
+  if (hasNestedParentheses(query)) {
+    throw new Error('Nested parentheses are not supported in search queries');
+  }
+
   return parser.parse(query.trim());
 }

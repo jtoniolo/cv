@@ -131,29 +131,12 @@ describe('QueryParserHelper', () => {
       });
     });
 
-    it('should follow nested operator precedence with multiple depths', () => {
-      const result = parseSearchQuery(
-        '(angular AND (typescript OR javascript)) AND testing'
+    it('should reject queries with nested parentheses', () => {
+      expect(() =>
+        parseSearchQuery('(angular AND (typescript OR javascript)) AND testing')
+      ).toThrow(
+        new Error('Nested parentheses are not supported in search queries')
       );
-      expect(result).toEqual({
-        rawQuery: '(angular AND (typescript OR javascript)) AND testing',
-        rootGroup: {
-          terms: [
-            {
-              terms: [
-                'angular',
-                {
-                  terms: ['typescript', 'javascript'],
-                  operator: 'OR',
-                },
-              ],
-              operator: 'AND',
-            },
-            'testing',
-          ],
-          operator: 'AND',
-        },
-      });
     });
   });
 });
