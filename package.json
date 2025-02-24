@@ -5,11 +5,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run generate-cv && ng build",
+    "build": "yarn generate-cv && ng build",
+    "build:prod": "yarn generate-cv && ng build --configuration production && rm -rf pages/* && cp -r dist/cv/* pages/",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "generate-cv": "ts-node scripts/generate-cv-data.ts"
+    "generate-cv": "ts-node scripts/generate-cv-data.ts",
+    "analyze": "source-map-explorer dist/cv/*.js"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +50,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "source-map-explorer": "^2.5.3",
     "ts-jest": "latest",
     "ts-node": "^10.9.2",
     "typescript": "~5.7.2"
