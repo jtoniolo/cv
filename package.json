@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "yarn generate-cv && ng build",
-    "build:prod": "yarn generate-cv && ng build --configuration production && rm -rf pages/* && cp -r dist/cv/* pages/",
+    "build:prod": "yarn generate-cv && ng build --configuration production && rm -rf docs/* && cp -r dist/cv/browser/* docs/",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
