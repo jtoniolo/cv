@@ -1,6 +1,12 @@
 {
   "basics": {
-    "title": "Software Developer",
+    "name": "Jeffrey Toniolo",
+    "contact": {
+      "phone": "6135551234",
+      "email": "info@toniolo.ca",
+      "city": "Kingston, Ontario, Canada"
+    },
+    "title": "Senior Full Stack Developer",
     "summary": "Seasoned professional adept at building and supporting top-tier applications in the not-for-profit; financial and oil and gas industries. Rapidly troubleshooting issues using a logical and systematic approach. Experienced mentor of technical staff, providing guidance and encouragement. Expert implementer of systems and streamlined processes delivering major efficiency gains and cost savings.",
     "highlights": [
       "CRM 2011 & 2013 Certified",
@@ -39,15 +45,35 @@
               "technologies": ["Angular", "ASP.NET Core", "SQL Server"],
               "challenges": "Faced a lack of knowledge transfer and limited resources. Overcame these challenges through effective use of tools, extensive troubleshooting experience, and efficient time management.",
               "achievements": "Successfully eliminated maintenance, support, and enhancement backlog. Received awards for excellence in contributions.",
-              "keywords": ["Angular", "ASP.NET Core", "SQL Server", "Serilog", "Application Insights", "WAF", "microservices"]
+              "keywords": [
+                "Angular",
+                "ASP.NET Core",
+                "SQL Server",
+                "Serilog",
+                "Application Insights",
+                "WAF",
+                "microservices"
+              ]
             },
             {
               "name": "Economic Substance V2 Project",
               "role": "Lead Developer and Architect",
               "responsibilities": "Modernized the Economic Substance app by eliminating outdated third-party dependencies and switching to the current version of .NET (version 7 at the time). Chose ABP Framework for rapid development.",
-              "technologies": ["ASP.NET Core", "Angular", "MongoDB", "ElasticSearch"],
+              "technologies": [
+                "ASP.NET Core",
+                "Angular",
+                "MongoDB",
+                "ElasticSearch"
+              ],
               "achievements": "Implemented Microservice best practices with queue-based, cross-service communication, resulting in a more stable and performant design. Switched to an ElasticSearch index, dramatically increasing search performance from minutes to seconds.",
-              "keywords": ["ASP.NET Core", "Angular", "MongoDB", "ElasticSearch", "microservices", "ABP Framework"]
+              "keywords": [
+                "ASP.NET Core",
+                "Angular",
+                "MongoDB",
+                "ElasticSearch",
+                "microservices",
+                "ABP Framework"
+              ]
             },
             {
               "name": "RAG IP Project",
@@ -112,13 +138,7 @@
             "Developed a monitoring tool for MS Groove Databridge servers",
             "Development of changes to Windows 7 OSD in SCCM 2007"
           ],
-          "keywords": [
-            "C#",
-            "VB.Net",
-            "MS SQL",
-            "SCCM",
-            "Windows OSD"
-          ]
+          "keywords": ["C#", "VB.Net", "MS SQL", "SCCM", "Windows OSD"]
         }
       ]
     },
@@ -132,11 +152,7 @@
           "responsibilities": [
             "Delivered desktop support and services to clients using remote takeover technology and in person"
           ],
-          "keywords": [
-            "desktop support",
-            "remote support",
-            "technical support"
-          ]
+          "keywords": ["desktop support", "remote support", "technical support"]
         }
       ]
     },
@@ -184,19 +200,12 @@
     {
       "degree": "Computer Engineering Technology Diploma",
       "institution": "Seneca College, Toronto, Ontario",
-      "keywords": [
-        "computer engineering",
-        "technology",
-        "diploma"
-      ]
+      "keywords": ["computer engineering", "technology", "diploma"]
     },
     {
       "degree": "High School Diploma",
       "institution": "École Secondaire Saint Charles Garnier, Whitby, Ontario",
-      "keywords": [
-        "high school",
-        "bilingual education"
-      ]
+      "keywords": ["high school", "bilingual education"]
     }
   ],
   "certifications": [
@@ -247,12 +256,7 @@
           "Sandcastle",
           "TFS (on premise & online)"
         ],
-        "keywords": [
-          "IDE",
-          "database tools",
-          "SDK",
-          "source control"
-        ]
+        "keywords": ["IDE", "database tools", "SDK", "source control"]
       },
       {
         "name": "Languages",
@@ -265,12 +269,7 @@
           "VB Script",
           "VBA"
         ],
-        "keywords": [
-          "programming",
-          "scripting",
-          "web development",
-          "database"
-        ]
+        "keywords": ["programming", "scripting", "web development", "database"]
       }
     ]
   }

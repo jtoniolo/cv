@@ -32,6 +32,7 @@ This application is used to host the CV of the author.
 - Feel free to offer suggestions or add missing tasks.
 
 # Development Instructions
+
 - Always verify changes with `yarn build` first to check for build errors
 - Once build passes, run `yarn start` to launch the development server
 - Demo and verify changes in the browser
@@ -39,18 +40,21 @@ This application is used to host the CV of the author.
 # Tasks
 
 1. Data Structure Setup
+
    - Convert example.html content into JSON format
    - Generate JSON schema for CV data validation
    - Add keywords array for each CV section
    - Validate JSON against schema
 
 2. Application Architecture Planning
+
    - Analyze example.html layout
    - Determine required components and their relationships
    - Plan state management structure with NgRx
    - Document component specifications
 
 3. Initial Application Setup
+
    - Create new Angular application with CLI
    - Configure TypeScript for strict mode
    - Set up Angular Material
@@ -60,6 +64,7 @@ This application is used to host the CV of the author.
    - Run `yarn start` and verify application loads
 
 4. Core Experience Implementation
+
    - Create CV container and data service
    - Implement header with search and navigation
    - Add footer component
@@ -69,6 +74,7 @@ This application is used to host the CV of the author.
    - Run `yarn start` and verify layout implementation
 
 5. Career Timeline Implementation
+
    - Create shared timeline component
    - Build experience section components
    - Implement experience filtering
@@ -78,6 +84,7 @@ This application is used to host the CV of the author.
    - Run `yarn start` and verify timeline functionality
 
 6. Supporting Sections
+
    - Implement education section with timeline integration
    - Build skills section with grid/list views
    - Add certifications display
@@ -86,15 +93,20 @@ This application is used to host the CV of the author.
    - Run `yarn start` and verify all sections
 
 7. Search and Filter Feature
+
    - Implement search component with autocomplete
    - Add filter chips for active filters
    - Create search service with keyword matching
-   - Integrate section toggling
+   - Add section selector component
+   - Implement section visibility toggling
+   - Integrate section visibility with search results
    - Add search result highlighting
+   - Ensure default view shows all sections
    - Run `yarn build` to verify no build errors
-   - Run `yarn start` and verify search functionality
+   - Run `yarn start` and verify search and section functionality
 
 8. PDF Export Feature
+
    - Create PDF export component and service
    - Implement export configuration dialog
    - Add progress indicator
@@ -104,6 +116,7 @@ This application is used to host the CV of the author.
    - Run `yarn start` and verify PDF generation
 
 9. Polish and Optimization
+
    - Implement dark mode toggle
    - Add responsive layout adjustments
    - Set up lazy loading
@@ -123,4 +136,3 @@ This application is used to host the CV of the author.
     - Run `yarn build` to verify production build
     - Run `yarn test` to verify all tests pass
     - Deploy to GitHub Pages and verify deployment
-

@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { CvPageActions, CvApiActions } from './cv.actions';
 import { initialCvState } from './cv.state';
+import { parseSearchQuery } from '../../shared/helpers/query-parser.helper';
 
 export const cvReducer = createReducer(
   initialCvState,
@@ -12,6 +13,7 @@ export const cvReducer = createReducer(
   on(CvPageActions.setFilterTerm, (state, { term }) => ({
     ...state,
     filterTerm: term,
+    searchQuery: parseSearchQuery(term),
   })),
   on(CvPageActions.toggleSectionFilter, (state, { section, enabled }) => ({
     ...state,
@@ -20,6 +22,12 @@ export const cvReducer = createReducer(
       [section]: enabled,
     },
   })),
+  on(CvPageActions.selectSection, (state, { section }) => {
+    return {
+      ...state,
+      selectedSections: section,
+    };
+  }),
   on(CvApiActions.cVLoadDataSuccess, (state, { data }) => {
     // Initialize all projects as expanded by default
     const expandedProjects: { [key: string]: boolean } = {};

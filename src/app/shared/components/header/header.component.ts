@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SectionSelectorComponent } from '../section-selector/section-selector.component';
+import { CvPageActions } from '../../../state';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {
+  selectBasicsName,
+  selectParsedQuery,
+} from '../../../state/cv/cv.selectors';
+import { parseSearchQuery } from '../../helpers/query-parser.helper';
 
 @Component({
   selector: 'app-header',
@@ -23,21 +31,33 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    SectionSelectorComponent,
   ],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  searchControl = new FormControl('');
+  private readonly store = inject(Store);
+  searchControl = new FormControl<string>('');
+  name$ = this.store.select(selectBasicsName);
+  parsedQuery$ = this.store.select(selectParsedQuery);
 
-  constructor(private store: Store) {}
-
-  onSearch(): void {
-    const searchTerm = this.searchControl.value;
-    if (searchTerm) {
-      // We'll implement the search action later when we work on the search feature
-      console.log('Searching for:', searchTerm);
-    }
+  constructor() {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => {
+        const term = value ?? '';
+        try {
+          const parsedQuery = parseSearchQuery(term);
+          this.store.dispatch(
+            CvPageActions.setFilterTerm({ term, parsedQuery })
+          );
+        } catch (error) {
+          this.store.dispatch(
+            CvPageActions.setFilterTerm({ term, parsedQuery: null })
+          );
+        }
+      });
   }
 }

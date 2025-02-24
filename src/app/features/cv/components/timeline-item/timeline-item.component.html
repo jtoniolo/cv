@@ -1,4 +1,7 @@
-<div class="timeline-item" [class.hidden]="!isVisible()">
+<div
+  class="timeline-item"
+  [class.hidden]="!(position() | jsonSearch : filterTerm()) || !isVisible()"
+>
   <div class="timeline-marker"></div>
   <mat-card class="position-card">
     <mat-card-header>

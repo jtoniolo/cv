@@ -4,7 +4,11 @@
       <h2>Education History</h2>
     </div>
     <div class="education-grid">
-      <mat-card *ngFor="let edu of education()" class="education-card">
+      <mat-card
+        *ngFor="let edu of education()"
+        [class.hidden]="!(edu | jsonSearch : filterTerm())"
+        class="education-card"
+      >
         <mat-card-content>
           <h3>{{ edu.degree }}</h3>
           <p>{{ edu.institution }}</p>
@@ -25,6 +29,7 @@
     <div class="certifications-grid">
       <mat-card
         *ngFor="let cert of certifications()"
+        [class.hidden]="!(cert | jsonSearch : filterTerm())"
         class="certification-card"
       >
         <mat-card-content>
