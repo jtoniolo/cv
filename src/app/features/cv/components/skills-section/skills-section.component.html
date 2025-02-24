@@ -1,0 +1,33 @@
+<div class="skills-container">
+  <div class="section-header">
+    <h2>Skills</h2>
+    <mat-button-toggle-group
+      [value]="viewMode()"
+      (change)="toggleViewMode($event.value)"
+    >
+      <mat-button-toggle value="grid">
+        <mat-icon>grid_view</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list">
+        <mat-icon>view_list</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="skills-grid" [class.list-view]="viewMode() === 'list'">
+    <mat-card
+      *ngFor="let category of skills()?.categories"
+      class="skill-category"
+      [class.hidden]="!(category | jsonSearch : filterTerm())"
+    >
+      <mat-card-header>
+        <mat-card-title>{{ category.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-chip-set>
+          <mat-chip *ngFor="let skill of category.items">{{ skill }}</mat-chip>
+        </mat-chip-set>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

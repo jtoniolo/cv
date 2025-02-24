@@ -1,0 +1,81 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="header-row">
+    <div class="left-section">
+      <a
+        mat-button
+        routerLink="/"
+        routerLinkActive="active"
+        matTooltip="Go to home"
+      >
+        <span class="name">{{ name$ | async }}</span>
+      </a>
+    </div>
+
+    <div class="center-section">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search CV</mat-label>
+        <input
+          matInput
+          [formControl]="searchControl"
+          type="text"
+          placeholder="Search by keywords..."
+        />
+        <button
+          *ngIf="searchControl.value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="searchControl.setValue('')"
+          matTooltip="Clear search"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+
+      <app-section-selector
+        appearance="outline"
+        class="section-selector"
+      ></app-section-selector>
+    </div>
+
+    <div class="right-section">
+      <a
+        *ngIf="linkedinUrl$ | async"
+        [href]="linkedinUrl$ | async"
+        target="_blank"
+        mat-icon-button
+        matTooltip="Visit my LinkedIn profile"
+        aria-label="Open LinkedIn profile"
+      >
+        <mat-icon svgIcon="linkedin"></mat-icon>
+      </a>
+      <a
+        *ngIf="githubUrl$ | async"
+        [href]="githubUrl$ | async"
+        target="_blank"
+        mat-icon-button
+        matTooltip="Visit my GitHub profile"
+        aria-label="Open GitHub profile"
+      >
+        <mat-icon svgIcon="github"></mat-icon>
+      </a>
+      <button
+        mat-icon-button
+        aria-label="Export PDF"
+        matTooltip="Export as PDF (coming soon)"
+        disabled
+      >
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Toggle theme"
+        matTooltip="Toggle dark mode"
+        disabled
+      >
+        <mat-icon>dark_mode</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

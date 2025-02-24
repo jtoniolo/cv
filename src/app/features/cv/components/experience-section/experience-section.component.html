@@ -1,0 +1,38 @@
+<section class="experience-section">
+  <h2>Professional Experience</h2>
+
+  <ng-container *ngIf="loading()">
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="error()">
+    <div class="error-message">
+      {{ error() }}
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="companies()">
+    <div class="filters" *ngIf="availableTags()">
+      <mat-chip-listbox
+        aria-label="Experience filters"
+        (change)="onFilterChange($event)"
+      >
+        <mat-chip-option selected value="All">All</mat-chip-option>
+        <mat-chip-option *ngFor="let tag of availableTags()" [value]="tag">
+          {{ tag }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="companies-list">
+      <app-company-timeline
+        *ngFor="let company of companies()"
+        [company]="company"
+        [activeFilters]="activeFilters"
+      >
+      </app-company-timeline>
+    </div>
+  </ng-container>
+</section>

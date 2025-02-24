@@ -1,0 +1,46 @@
+<div
+  class="timeline-item"
+  [class.hidden]="!(position() | jsonSearch : filterTerm()) || !isVisible()"
+>
+  <div class="timeline-marker"></div>
+  <mat-card class="position-card">
+    <mat-card-header>
+      <mat-card-title>{{ position().title }}</mat-card-title>
+      <mat-card-subtitle>
+        <span class="date-range">
+          {{ position().startDate | date : "MMM yyyy" }} -
+          {{
+            position().endDate
+              ? (position().endDate | date : "MMM yyyy")
+              : "Present"
+          }}
+        </span>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p *ngIf="position().summary" class="summary">{{ position().summary }}</p>
+
+      <ng-container *ngIf="position().responsibilities?.length">
+        <h4>Key Responsibilities:</h4>
+        <ul class="responsibilities">
+          <li *ngFor="let responsibility of position().responsibilities">
+            {{ responsibility }}
+          </li>
+        </ul>
+      </ng-container>
+
+      <mat-chip-set *ngIf="position().keywords?.length">
+        <mat-chip *ngFor="let keyword of position().keywords">
+          {{ keyword }}
+        </mat-chip>
+      </mat-chip-set>
+
+      <app-experience-item
+        *ngIf="position().projects?.length"
+        [projects]="position().projects ?? []"
+      >
+      </app-experience-item>
+    </mat-card-content>
+  </mat-card>
+</div>

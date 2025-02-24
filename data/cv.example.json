@@ -1,0 +1,186 @@
+{
+  "basics": {
+    "name": "John Smith",
+    "contact": {
+      "phone": "5555555555",
+      "email": "john.smith@example.com",
+      "city": "Toronto, Ontario, Canada"
+    },
+    "title": "Senior Software Developer",
+    "summary": "Experienced professional with expertise in building and maintaining enterprise applications across various industries. Known for systematic problem-solving approach and mentoring capabilities. Proven track record in implementing efficient systems and processes that enhance productivity and reduce costs.",
+    "highlights": [
+      "Cloud Architecture Certified",
+      "Process Optimization",
+      "Project Management",
+      "Team Leadership",
+      "System Integration",
+      "Problem Solving",
+      "Database Design",
+      "Software Architecture",
+      "Technical Documentation"
+    ],
+    "keywords": [
+      "software development",
+      "leadership",
+      "problem solving",
+      "mentoring",
+      "process improvement",
+      "documentation"
+    ]
+  },
+  "experience": [
+    {
+      "company": "TECH SOLUTIONS INC",
+      "positions": [
+        {
+          "title": "Senior Software Developer",
+          "startDate": "2021-01-01",
+          "endDate": "2024-01-01",
+          "summary": "Led development teams in creating enterprise-scale applications using modern technologies and cloud services. Managed multiple projects simultaneously while ensuring high code quality and team productivity.",
+          "projects": [
+            {
+              "name": "Enterprise Data Platform",
+              "role": "Lead Developer",
+              "responsibilities": "Led development of a cloud-based data platform serving multiple business units. Implemented modern development practices and improved system reliability.",
+              "technologies": ["React", "Node.js", "AWS"],
+              "challenges": "Coordinated with multiple stakeholders and integrated various legacy systems. Overcame technical debt through systematic refactoring.",
+              "achievements": "Reduced system downtime by 80% and improved data processing speed by 60%.",
+              "keywords": [
+                "React",
+                "Node.js",
+                "AWS",
+                "microservices",
+                "cloud architecture"
+              ]
+            },
+            {
+              "name": "Customer Portal Modernization",
+              "role": "Technical Lead",
+              "responsibilities": "Modernized legacy customer portal using current web technologies and cloud services.",
+              "technologies": ["Angular", "Azure", "MongoDB"],
+              "achievements": "Improved user satisfaction scores by 40% and reduced page load times by 65%.",
+              "keywords": [
+                "Angular",
+                "Azure",
+                "MongoDB",
+                "UI/UX",
+                "cloud migration"
+              ]
+            }
+          ],
+          "keywords": [
+            "full stack",
+            "team lead",
+            "cloud architecture",
+            "Azure",
+            "AWS",
+            "modern web"
+          ]
+        },
+        {
+          "title": "Software Developer",
+          "startDate": "2015-01-01",
+          "endDate": "2020-12-31",
+          "responsibilities": [
+            "Developed and maintained enterprise applications",
+            "Implemented automated testing and CI/CD pipelines",
+            "Designed and built RESTful APIs",
+            "Created responsive web interfaces",
+            "Optimized database performance"
+          ],
+          "keywords": [
+            "web development",
+            "API design",
+            "automation",
+            "testing",
+            "CI/CD"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "DIGITAL SYSTEMS CORP",
+      "positions": [
+        {
+          "title": "Junior Developer",
+          "startDate": "2013-01-01",
+          "endDate": "2014-12-31",
+          "responsibilities": [
+            "Developed and maintained web applications",
+            "Collaborated on database design and optimization"
+          ],
+          "keywords": ["web development", "databases", "team collaboration"]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "institution": "University of Technology, Toronto",
+      "keywords": ["computer science", "software engineering", "bachelor"]
+    },
+    {
+      "degree": "High School Diploma",
+      "institution": "Central High School, Toronto",
+      "keywords": ["high school", "STEM focus"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Solutions Architect Associate",
+      "keywords": ["cloud", "AWS", "architecture"]
+    },
+    {
+      "name": "Professional Scrum Master I",
+      "keywords": ["agile", "scrum", "project management"]
+    },
+    {
+      "name": "MongoDB Developer Certification",
+      "keywords": ["database", "NoSQL", "MongoDB"]
+    }
+  ],
+  "skills": {
+    "categories": [
+      {
+        "name": "Programming Languages",
+        "items": [
+          "JavaScript/TypeScript",
+          "Python",
+          "Java",
+          "SQL",
+          "HTML/CSS",
+          "C#",
+          "Go"
+        ],
+        "keywords": ["development", "coding", "programming"]
+      },
+      {
+        "name": "Technologies",
+        "items": [
+          "React",
+          "Angular",
+          "Node.js",
+          "Docker",
+          "Kubernetes",
+          "AWS",
+          "Azure"
+        ],
+        "keywords": ["frameworks", "cloud", "containers"]
+      },
+      {
+        "name": "Tools",
+        "items": [
+          "Git",
+          "Jenkins",
+          "Jira",
+          "VS Code",
+          "IntelliJ",
+          "Postman",
+          "Linux"
+        ],
+        "keywords": ["development tools", "CI/CD", "productivity"]
+      }
+    ]
+  }
+}

@@ -31,15 +31,108 @@ This application is used to host the CV of the author.
 - I want to host on GitHub pages. Create a folder to deploy the app. You'll need to add a place-holder file (index.html) as first.
 - Feel free to offer suggestions or add missing tasks.
 
+# Development Instructions
+
+- Always verify changes with `yarn build` first to check for build errors
+- Once build passes, run `yarn start` to launch the development server
+- Demo and verify changes in the browser
+
 # Tasks
 
-1. Convert the content of example.html into json.
-2. Use the layout of example.html and the data in the generated json to inform the layout and components required for the app.
-3. Determine which components will be needed. Update the tasks section of the README with tasks for each component. Renumber tasks as needed.
-4. Add the Github Pages folder
-5. Create the app.
-6. Create a GitHub action that will be used to build and deploy the app to the pages folder. This will be triggered when merging a PR from dev to main.
-5. Create components (replace this with component tasks).
-6. Add search/filtering functionality.
-7. Add export feature.
+1. Data Structure Setup
 
+   - Convert example.html content into JSON format
+   - Generate JSON schema for CV data validation
+   - Add keywords array for each CV section
+   - Validate JSON against schema
+
+2. Application Architecture Planning
+
+   - Analyze example.html layout
+   - Determine required components and their relationships
+   - Plan state management structure with NgRx
+   - Document component specifications
+
+3. Initial Application Setup
+
+   - Create new Angular application with CLI
+   - Configure TypeScript for strict mode
+   - Set up Angular Material
+   - Configure NgRx store and effects
+   - Implement basic routing structure
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify application loads
+
+4. Core Experience Implementation
+
+   - Create CV container and data service
+   - Implement header with search and navigation
+   - Add footer component
+   - Build basics section component
+   - Set up initial theme and responsive layout
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify layout implementation
+
+5. Career Timeline Implementation
+
+   - Create shared timeline component
+   - Build experience section components
+   - Implement experience filtering
+   - Add company and position display
+   - Integrate project details view
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify timeline functionality
+
+6. Supporting Sections
+
+   - Implement education section with timeline integration
+   - Build skills section with grid/list views
+   - Add certifications display
+   - Integrate section navigation
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify all sections
+
+7. Search and Filter Feature
+
+   - Implement search component with autocomplete
+   - Add filter chips for active filters
+   - Create search service with keyword matching
+   - Add section selector component
+   - Implement section visibility toggling
+   - Integrate section visibility with search results
+   - Add search result highlighting
+   - Ensure default view shows all sections
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify search and section functionality
+
+8. PDF Export Feature
+
+   - Create PDF export component and service
+   - Implement export configuration dialog
+   - Add progress indicator
+   - Handle pagination and headers/footers
+   - Set up download management
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify PDF generation
+
+9. Polish and Optimization
+
+   - Implement dark mode toggle
+   - Add responsive layout adjustments
+   - Set up lazy loading
+   - Implement caching strategy
+   - Add error handling
+   - Ensure accessibility compliance
+   - Run `yarn build` to verify no build errors
+   - Run `yarn start` and verify optimizations
+
+10. Testing and Deployment
+    - Write unit tests for components
+    - Add integration tests for features
+    - Set up GitHub Pages configuration
+    - Create deployment workflow
+    - Configure production build
+    - Add documentation
+    - Run `yarn build` to verify production build
+    - Run `yarn test` to verify all tests pass
+    - Deploy to GitHub Pages and verify deployment

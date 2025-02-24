@@ -1,0 +1,32 @@
+.cv-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cv-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  padding-top: 80px; /* Toolbar height + extra space for form field */
+
+  @media (max-width: 600px) {
+    padding-top: 72px; /* Reduced height for mobile */
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--background-color);
+  }
+
+  mat-tab-nav-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
