@@ -28,7 +28,9 @@ import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 })
 export class ExperienceItemComponent {
   private readonly store = inject(Store);
-  filterTerm = toSignal(this.store.select(selectParsedQuery));
+  filterTerm = toSignal(this.store.select(selectParsedQuery), {
+    initialValue: null,
+  });
   projects = input<Project[]>([]);
   accordion = viewChild.required(MatAccordion);
 

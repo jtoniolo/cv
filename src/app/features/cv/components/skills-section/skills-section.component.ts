@@ -29,7 +29,9 @@ type ViewMode = 'grid' | 'list';
 export class SkillsSectionComponent {
   private readonly store = inject(Store<CvState>);
   skills = toSignal(this.store.select(selectSkills));
-  filterTerm = toSignal(this.store.select(selectParsedQuery));
+  filterTerm = toSignal(this.store.select(selectParsedQuery), {
+    initialValue: null,
+  });
   viewMode = signal<ViewMode>('grid');
 
   toggleViewMode(mode: ViewMode) {

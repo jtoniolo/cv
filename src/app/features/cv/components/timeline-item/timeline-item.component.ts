@@ -24,7 +24,9 @@ import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
 })
 export class TimelineItemComponent {
   private readonly store = inject(Store);
-  filterTerm = toSignal(this.store.select(selectParsedQuery));
+  filterTerm = toSignal(this.store.select(selectParsedQuery), {
+    initialValue: null,
+  });
 
   position = input.required<Position>();
   companyName = input.required<string>();

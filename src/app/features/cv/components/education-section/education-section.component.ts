@@ -23,5 +23,7 @@ export class EducationSectionComponent {
   private readonly store = inject(Store<CvState>);
   education = toSignal(this.store.select(selectEducation));
   certifications = toSignal(this.store.select(selectCertifications));
-  filterTerm = toSignal(this.store.select(selectParsedQuery));
+  filterTerm = toSignal(this.store.select(selectParsedQuery), {
+    initialValue: null,
+  });
 }
