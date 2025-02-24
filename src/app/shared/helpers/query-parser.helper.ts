@@ -110,7 +110,9 @@ class TokenParser {
    * @private
    */
   private groupTerms(tokens: TokenOrGroup[]): (string | SearchTermGroup)[] {
-    const result: (string | SearchTermGroup)[] = [];
+    // First pass: collect AND groups
+    const andGroups: (string | SearchTermGroup)[] = [];
+    let currentGroup: (string | SearchTermGroup)[] = [];
     let i = 0;
 
     while (i < tokens.length) {
@@ -118,24 +120,44 @@ class TokenParser {
 
       if (
         current.type === 'OPERATOR' &&
-        current.token?.toUpperCase() === 'AND' &&
-        i > 0 &&
-        i < tokens.length - 1
+        current.token?.toUpperCase() === 'AND'
       ) {
-        const prev = result.pop()!;
-        const next = this.tokenToTerm(tokens[i + 1]);
-        result.push({
-          operator: 'AND',
-          terms: [prev, next],
-        });
-        i += 2;
-      } else {
-        result.push(this.tokenToTerm(current));
         i++;
+        continue;
       }
+
+      if (
+        current.type === 'OPERATOR' &&
+        current.token?.toUpperCase() === 'OR'
+      ) {
+        if (currentGroup.length > 1) {
+          andGroups.push({
+            operator: 'AND' as LogicalOperator,
+            terms: currentGroup,
+          });
+        } else if (currentGroup.length === 1) {
+          andGroups.push(currentGroup[0]);
+        }
+        currentGroup = [];
+        i++;
+        continue;
+      }
+
+      currentGroup.push(this.tokenToTerm(current));
+      i++;
     }
 
-    return result;
+    // Handle the last group
+    if (currentGroup.length > 1) {
+      andGroups.push({
+        operator: 'AND' as LogicalOperator,
+        terms: currentGroup,
+      });
+    } else if (currentGroup.length === 1) {
+      andGroups.push(currentGroup[0]);
+    }
+
+    return andGroups;
   }
 
   private tokenToTerm(token: TokenOrGroup): string | SearchTermGroup {
