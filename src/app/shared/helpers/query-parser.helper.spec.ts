@@ -46,13 +46,8 @@ describe('QueryParserHelper', () => {
       expect(result).toEqual({
         rawQuery: '"full stack" AND \'node.js\'',
         rootGroup: {
-          terms: [
-            {
-              terms: ['full stack', 'node.js'],
-              operator: 'AND',
-            },
-          ],
-          operator: 'OR',
+          terms: ['full stack', 'node.js'],
+          operator: 'AND',
         },
       });
     });
@@ -79,13 +74,8 @@ describe('QueryParserHelper', () => {
       expect(result).toEqual({
         rawQuery: 'angular AND typescript',
         rootGroup: {
-          terms: [
-            {
-              terms: ['angular', 'typescript'],
-              operator: 'AND',
-            },
-          ],
-          operator: 'OR',
+          terms: ['angular', 'typescript'],
+          operator: 'AND',
         },
       });
     });
