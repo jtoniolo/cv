@@ -75,14 +75,17 @@ class TokenParser {
     let word = '';
     let i = 0;
 
+    // strip outer parentheses since that is always redundant for our purposes.
+    if (query.startsWith('(') && query.endsWith(')')) {
+      query = query.slice(1, -1);
+    }
+
     const regex = /'[^']*'|"[^"]*"|\([^()]*\)|\S+/g;
     const tokens = Array.from(query.matchAll(regex), (m) => {
       const term = m[0];
 
       if (term.startsWith('(')) {
-        // Remove outer parentheses and recursively tokenize the inner content
-        const innerContent = term.slice(1, -1);
-        const innerTokens = this.tokenize(innerContent);
+        const innerTokens = this.tokenize(term);
         // Process the inner tokens to create a grouped structure
         const groupedTokens = this.groupTerms(
           innerTokens.map((t) => t.token || t.group).filter(Boolean)
