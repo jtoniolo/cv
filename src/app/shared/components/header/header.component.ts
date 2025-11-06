@@ -61,7 +61,7 @@ export class HeaderComponent {
   parsedQuery$ = this.store.select(selectParsedQuery);
 
   get isExperiencePage(): boolean {
-    return this.router.url.includes('/experience');
+    return this.router.url === '/experience';
   }
 
   constructor() {

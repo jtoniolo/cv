@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { ContactFormData } from '../../models/contact-form.model';
 
 /**
  * Contact state actions
@@ -7,7 +8,7 @@ import { createActionGroup, emptyProps, props } from '@ngrx/store';
 export const ContactPageActions = createActionGroup({
   source: 'Contact Page',
   events: {
-    'Submit Form': props<{ formData: any }>(),
+    'Submit Form': props<{ formData: ContactFormData }>(),
     'Submit Success': props<{ message: string }>(),
     'Submit Failure': props<{ error: string }>(),
     'Reset Form': emptyProps(),
