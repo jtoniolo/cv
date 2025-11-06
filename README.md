@@ -1,43 +1,161 @@
-# CV UI
+# Consulting Profile Application
 
-# Instructions for Copilot
+## Overview
 
-Follow these guidlines
+A comprehensive consulting/contractor profile application built with Angular, Angular Material, and NgRx. This application serves as a professional showcase with three main sections:
+
+1. **Home Page**: Static marketing page with professional profile and value proposition
+2. **Experience**: Data-driven CV section with search, filter, and PDF export capabilities
+3. **Contact**: Form with Cloudflare Worker backend integration and Turnstile spam protection
+
+### Key Features
+
+- **Home Page**: Static HTML/CSS marketing content (pure presentation)
+- **Experience**: Comprehensive CV with search, filter, and PDF export capabilities
+- **Contact**: Form with backend integration (Cloudflare Worker + Turnstile)
+- **Responsive Design**: Optimized for all screen sizes
+- **Type-Safe**: Strict TypeScript implementation
+- **State Management**: NgRx for experience section and form submission state
+- **Content Approach**: Static content for home/contact, JSON-driven for experience
+
+## Instructions for Copilot
+
+Follow these guidelines:
 
 - Follow best practices.
-- Comment code. Include jsdoc comments with parameters for all methods, classes, interfaces, etc.
+- Comment code. Include JSDoc comments with parameters for all methods, classes, interfaces, etc.
 - Use strict TypeScript type safety.
 - Do not use the `any` type. Create types as needed.
 
-# Application
+## Application Architecture
 
-This application is used to host the CV of the author.
+### Technology Stack
 
-- Build using Angular, Angular Material and NgRx.
-- Use Yarn as the package manager.
-- Do not specify package versions. Always install the latest.
-- CV content should be stored in as json file.
-- The json should include a keywords array for each section of the CV. The keywords will not be rendered. Instead, a search feature will be used to filter the CV by keyword.
-- Generate a json schema for the json.
-- Build individual components to make the app modular.
-- We do not want a backend. This will be purely a client app.
-- Use the Cli to generate the application.
-- Header and footer should always be visible in the large screen online rendering
-- I want to be able to export the filtered CV as a paginated PDF. Header and footers on each page.
-- example.html contains an example cv. Different roles may have slightly different sections. We will need to account for this in the json and app layout.
-- Use git to manage source control.
-- Create a new branch for each task. The default origin branch to use as source is dev.
-- I want to demo the app after you finish each task (if appropriate) so that I can provide feedback.
-- I want to host on GitHub pages. Create a folder to deploy the app. You'll need to add a place-holder file (index.html) as first.
-- Feel free to offer suggestions or add missing tasks.
+- **Framework**: Angular (latest)
+- **UI Library**: Angular Material
+- **State Management**: NgRx
+- **Package Manager**: Yarn (always install latest versions)
+- **Hosting**: GitHub Pages
+- **Backend**: Cloudflare Worker (for contact form)
 
-# Development Instructions
+### Design Principles
 
-- Always verify changes with `yarn build` first to check for build errors
-- Once build passes, run `yarn start` to launch the development server
-- Demo and verify changes in the browser
+- Build individual components to make the app modular
+- **Home & Contact**: Static content directly in templates (no data files)
+- **Experience**: Content stored as JSON with schema validation and keyword search
+- Header and footer always visible on large screens
+- Responsive design for all screen sizes
+- PDF export for experience/CV section only
 
-# Tasks
+### Development Workflow
+
+- Use git for source control
+- Create a new branch for each task (branch from `dev`)
+- Demo the app after each task completion for feedback
+- Always verify changes with `yarn build` before testing
+- Run `yarn start` to launch development server
+
+# Project Structure
+
+```
+/
+├── src/app/
+│   ├── features/
+│   │   ├── home/              # Home page - STATIC HTML/CSS only
+│   │   ├── experience/        # CV/Experience - data-driven with JSON
+│   │   └── contact/           # Contact form - static with API integration
+│   ├── shared/                # Shared components, pipes, helpers
+│   ├── state/                 # NgRx state (experience + contact submission)
+│   ├── services/              # Application services
+│   └── models/                # TypeScript interfaces and types
+├── copy/                      # Reference content (profile.md, contact.md)
+├── data/                      # JSON data files (experience only)
+└── docs/                      # GitHub Pages deployment
+```
+
+## Development Instructions
+
+### Setup
+
+```bash
+# Install dependencies
+yarn install
+
+# Generate data files
+yarn generate-cv
+
+# Start development server
+yarn start
+```
+
+### Development Workflow
+
+1. Always verify changes with `yarn build` first to check for build errors
+2. Once build passes, run `yarn start` to launch the development server
+3. Demo and verify changes in the browser
+4. Run `yarn test` to ensure tests pass
+
+### Build Commands
+
+```bash
+# Development build
+yarn build
+
+# Production build
+yarn build:prod
+
+# Run tests
+yarn test
+
+# Run tests in watch mode
+yarn test:watch
+```
+
+## Deployment
+
+The application is deployed to GitHub Pages. Production builds are automatically generated in the `docs/` folder.
+
+```bash
+# Build and deploy
+yarn build:prod
+git add docs/
+git commit -m "Deploy to GitHub Pages"
+git push
+```
+
+## Contact Form Backend
+
+The contact form integrates with a Cloudflare Worker backend with Turnstile spam protection. Configuration is managed through environment files:
+
+- `environment.ts` - Development configuration (local Cloudflare Worker, test Turnstile key)
+- `environment.prod.ts` - Production configuration (deployed Worker, production Turnstile key)
+
+## Content Management
+
+### Static Content (Home & Contact Pages)
+
+Static content is maintained as reference material in `copy/` directory:
+
+- `copy/profile.md` - Source content for home page
+- `copy/contact.md` - Source content for contact page intro
+
+Convert markdown to HTML in component templates using Angular Material components.
+
+### Data-Driven Content (Experience Section)
+
+Experience/CV data is JSON-driven:
+
+- `data/experience.json` - CV data with keywords for search
+- `data/experience.schema.json` - JSON schema for validation
+- Supports search, filter, and PDF export
+
+## Documentation
+
+- [Refactoring Plan](REFACTORING-PLAN.md) - Current refactoring roadmap
+- [Architecture](ARCHITECTURE.md) - Application architecture details
+- [Component Analysis](COMPONENT-ANALYSIS.md) - Component structure and data flow
+
+## Original Tasks
 
 1. Data Structure Setup
 

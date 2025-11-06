@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { MatChipsModule } from '@angular/material/chips';
 import { selectBasics } from '../../../../state';
-import { CvState } from '../../../../state/cv/cv.state';
+import { ExperienceState } from '../../../../state/experience/experience.state';
 
 @Component({
   selector: 'app-basics-section',
@@ -14,7 +14,7 @@ import { CvState } from '../../../../state/cv/cv.state';
   styleUrls: ['./basics-section.component.scss']
 })
 export class BasicsSectionComponent {
-  private readonly store = inject(Store<CvState>);
+  private readonly store = inject(Store<ExperienceState>);
   basics = toSignal( this.store.select(selectBasics));
 
 }

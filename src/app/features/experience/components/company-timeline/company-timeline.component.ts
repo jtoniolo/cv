@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { CompanyExperience } from '../../../../models/cv.model';
+import { CompanyExperience } from '../../../../models/experience.model';
 import { TimelineItemComponent } from '../timeline-item/timeline-item.component';
 
 @Component({

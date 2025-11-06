@@ -4,7 +4,7 @@ import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Project } from '../../../../models/cv.model';
+import { Project } from '../../../../models/experience.model';
 import { Store } from '@ngrx/store';
 import { selectParsedQuery } from '../../../../state';
 import { toSignal } from '@angular/core/rxjs-interop';

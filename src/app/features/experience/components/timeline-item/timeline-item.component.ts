@@ -2,7 +2,7 @@ import { Component, input, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { Position } from '../../../../models/cv.model';
+import { Position } from '../../../../models/experience.model';
 import { ExperienceItemComponent } from '../experience-item/experience-item.component';
 import { Store } from '@ngrx/store';
 import { selectParsedQuery } from '../../../../state';

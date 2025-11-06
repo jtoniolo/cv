@@ -1,12 +1,15 @@
-import { CvData, SelectableSection } from '../../models/cv.model';
+import {
+  ExperienceData,
+  SelectableSection,
+} from '../../models/experience.model';
 import { ParsedSearchQuery } from '../../models/search-query.model';
 
-export interface CvState {
-  basics: CvData['basics'] | null;
-  experience: CvData['experience'];
-  education: CvData['education'];
-  skills: CvData['skills'];
-  certifications: CvData['certifications'];
+export interface ExperienceState {
+  basics: ExperienceData['basics'] | null;
+  experience: ExperienceData['experience'];
+  education: ExperienceData['education'];
+  skills: ExperienceData['skills'];
+  certifications: ExperienceData['certifications'];
   loading: boolean;
   error: string | null;
   filterTerm: string;
@@ -15,9 +18,10 @@ export interface CvState {
   };
   selectedSections: SelectableSection;
   searchQuery: ParsedSearchQuery | null;
+  expandedProjects: { [key: string]: boolean };
 }
 
-export const initialCvState: CvState = {
+export const initialExperienceState: ExperienceState = {
   basics: null,
   experience: [],
   education: [],
@@ -33,4 +37,5 @@ export const initialCvState: CvState = {
   },
   selectedSections: 'all',
   searchQuery: null,
+  expandedProjects: {},
 };

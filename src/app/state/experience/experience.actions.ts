@@ -1,11 +1,14 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { CvData, SelectableSection } from '../../models/cv.model';
+import {
+  ExperienceData,
+  SelectableSection,
+} from '../../models/experience.model';
 import { ParsedSearchQuery } from '@app/models/search-query.model';
 
-export const CvPageActions = createActionGroup({
-  source: 'CV Page',
+export const ExperiencePageActions = createActionGroup({
+  source: 'Experience Page',
   events: {
-    'Load CV': emptyProps(),
+    'Load Experience': emptyProps(),
     'Set Filter Term': props<{
       term: string;
       parsedQuery: ParsedSearchQuery | null;
@@ -20,10 +23,10 @@ export const CvPageActions = createActionGroup({
   },
 });
 
-export const CvApiActions = createActionGroup({
-  source: 'CV API',
+export const ExperienceApiActions = createActionGroup({
+  source: 'Experience API',
   events: {
-    'CV Load Data Success': props<{ data: CvData }>(),
-    'CV Load Data Failure': props<{ error: string }>(),
+    'Experience Load Data Success': props<{ data: ExperienceData }>(),
+    'Experience Load Data Failure': props<{ error: string }>(),
   },
 });

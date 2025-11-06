@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SelectableSection } from '@app/models/cv.model';
+import { SelectableSection } from '@app/models/experience.model';
 
 @Pipe({
   name: 'sectionVisible',

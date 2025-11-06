@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MatChipsModule, MatChipListboxChange } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Store } from '@ngrx/store';
-import { CvState } from '../../../../state/cv/cv.state';
+import { ExperienceState } from '../../../../state/experience/experience.state';
 import { selectCompanies, selectLoading, selectError } from '../../../../state';
 import { CompanyTimelineComponent } from '../company-timeline/company-timeline.component';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CompanyExperience } from '@app/models/cv.model';
+import { CompanyExperience } from '@app/models/experience.model';
 
 @Component({
   selector: 'app-experience-section',
@@ -22,7 +22,7 @@ import { CompanyExperience } from '@app/models/cv.model';
   styleUrls: ['./experience-section.component.scss'],
 })
 export class ExperienceSectionComponent {
-  private readonly store = inject(Store<CvState>);
+  private readonly store = inject(Store<ExperienceState>);
   companies = toSignal(this.store.select(selectCompanies));
   loading = toSignal(this.store.select(selectLoading));
   error = toSignal(this.store.select(selectError));

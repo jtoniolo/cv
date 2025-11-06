@@ -10,13 +10,13 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionSelectorComponent } from '../section-selector/section-selector.component';
-import { CvPageActions } from '../../../state';
+import { ExperiencePageActions } from '../../../state';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import {
   selectBasicsName,
   selectParsedQuery,
   selectBasics,
-} from '../../../state/cv/cv.selectors';
+} from '../../../state/experience/experience.selectors';
 import { parseSearchQuery } from '../../helpers/query-parser.helper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -76,11 +76,11 @@ export class HeaderComponent {
         try {
           const parsedQuery = parseSearchQuery(term);
           this.store.dispatch(
-            CvPageActions.setFilterTerm({ term, parsedQuery })
+            ExperiencePageActions.setFilterTerm({ term, parsedQuery })
           );
         } catch (error) {
           this.store.dispatch(
-            CvPageActions.setFilterTerm({ term, parsedQuery: null })
+            ExperiencePageActions.setFilterTerm({ term, parsedQuery: null })
           );
         }
       });

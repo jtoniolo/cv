@@ -3,14 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { Store } from '@ngrx/store';
-import { CvPageActions } from './state/cv/cv.actions';
+import { ExperiencePageActions } from './state/experience/experience.actions';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'CV Application';
@@ -18,6 +18,6 @@ export class AppComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(CvPageActions.loadCV());
+    this.store.dispatch(ExperiencePageActions.loadExperience());
   }
 }

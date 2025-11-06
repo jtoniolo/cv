@@ -1,17 +1,18 @@
 {
-  "name": "cv",
-  "version": "0.0.0",
+  "name": "consulting-profile",
+  "version": "1.0.0",
+  "description": "Professional consulting/contractor profile with experience CV, contact form, and static marketing content",
   "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "yarn generate-cv && ng build",
-    "build:prod": "yarn generate-cv && ng build --configuration production && rm -rf docs/* && cp -r dist/cv/browser/* docs/",
+    "build": "yarn generate-experience && ng build",
+    "build:prod": "yarn generate-experience && ng build --configuration production && rm -rf docs/* && cp -r dist/cv/browser/* docs/",
     "build:cloudflare": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "generate-cv": "ts-node scripts/generate-cv-data.ts",
+    "generate-experience": "ts-node scripts/generate-experience-data.ts",
     "analyze": "source-map-explorer dist/cv/*.js"
   },
   "private": true,
