@@ -13,6 +13,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { experienceReducer } from './state/experience/experience.reducer';
 import { ExperienceEffects } from './state/experience/experience.effects';
+import { contactReducer } from './state/contact/contact.reducer';
+import { ContactEffects } from './state/contact/contact.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,8 +22,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    provideStore({ experience: experienceReducer }),
-    provideEffects([ExperienceEffects]),
+    provideStore({
+      experience: experienceReducer,
+      contact: contactReducer,
+    }),
+    provideEffects([ExperienceEffects, ContactEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };
