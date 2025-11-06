@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { CvComponent } from './features/cv/cv.component';
+import { ExperienceComponent } from './features/experience/experience.component';
 
-export const routes: Routes = [
-  { path: '', component: CvComponent }
-];
+export const routes: Routes = [{ path: '', component: ExperienceComponent }];

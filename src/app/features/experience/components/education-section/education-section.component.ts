@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CvState } from '../../../../state/cv/cv.state';
+import { ExperienceState } from '../../../../state/experience/experience.state';
 import {
   selectEducation,
   selectCertifications,
@@ -20,7 +20,7 @@ import { JsonSearchPipe } from '@app/shared/pipes/json-search.pipe';
   styleUrls: ['./education-section.component.scss'],
 })
 export class EducationSectionComponent {
-  private readonly store = inject(Store<CvState>);
+  private readonly store = inject(Store<ExperienceState>);
   education = toSignal(this.store.select(selectEducation));
   certifications = toSignal(this.store.select(selectCertifications));
   filterTerm = toSignal(this.store.select(selectParsedQuery), {

@@ -11,8 +11,8 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { cvReducer } from './state/cv/cv.reducer';
-import { CvEffects } from './state/cv/cv.effects';
+import { experienceReducer } from './state/experience/experience.reducer';
+import { ExperienceEffects } from './state/experience/experience.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,8 +20,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    provideStore({ cv: cvReducer }),
-    provideEffects([CvEffects]),
+    provideStore({ experience: experienceReducer }),
+    provideEffects([ExperienceEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };

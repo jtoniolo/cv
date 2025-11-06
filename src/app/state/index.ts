@@ -1,13 +1,13 @@
-import * as Actions from './cv/cv.actions';
-import * as Selectors from './cv/cv.selectors';
-import * as State from './cv/cv.state';
+import * as Actions from './experience/experience.actions';
+import * as Selectors from './experience/experience.selectors';
+import * as State from './experience/experience.state';
 
 // Actions
-export const CvApiActions = Actions.CvApiActions;
-export const CvPageActions = Actions.CvPageActions;
+export const ExperienceApiActions = Actions.ExperienceApiActions;
+export const ExperiencePageActions = Actions.ExperiencePageActions;
 
 // Selectors
-export const selectCvState = Selectors.selectCvState;
+export const selectExperienceState = Selectors.selectExperienceState;
 export const selectBasics = Selectors.selectBasics;
 export const selectCompanies = Selectors.selectCompanies;
 export const selectError = Selectors.selectError;

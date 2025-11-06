@@ -4,9 +4,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Store } from '@ngrx/store';
 import { selectSelectedSections } from '../../../state';
-import { CvPageActions } from '../../../state/cv/cv.actions';
+import { ExperiencePageActions } from '../../../state/experience/experience.actions';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { SelectableSection } from '@app/models/cv.model';
+import { SelectableSection } from '@app/models/experience.model';
 
 @Component({
   selector: 'app-section-selector',
@@ -26,6 +26,6 @@ export class SectionSelectorComponent {
   ];
 
   onSectionChange(section: SelectableSection): void {
-    this.store.dispatch(CvPageActions.selectSection({ section: section }));
+    this.store.dispatch(ExperiencePageActions.selectSection({ section: section }));
   }
 }

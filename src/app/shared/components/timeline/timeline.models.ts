@@ -1,4 +1,4 @@
-import { Project } from '../../../models/cv.model';
+import { Project } from '../../../models/experience.model';
 
 /**
  * Represents a single item in a timeline

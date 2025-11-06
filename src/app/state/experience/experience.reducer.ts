@@ -1,34 +1,40 @@
 import { createReducer, on } from '@ngrx/store';
-import { CvPageActions, CvApiActions } from './cv.actions';
-import { initialCvState } from './cv.state';
+import {
+  ExperiencePageActions,
+  ExperienceApiActions,
+} from './experience.actions';
+import { initialExperienceState } from './experience.state';
 import { parseSearchQuery } from '../../shared/helpers/query-parser.helper';
 
-export const cvReducer = createReducer(
-  initialCvState,
-  on(CvPageActions.loadCV, (state) => ({
+export const experienceReducer = createReducer(
+  initialExperienceState,
+  on(ExperiencePageActions.loadExperience, (state) => ({
     ...state,
     loading: true,
     error: null,
   })),
-  on(CvPageActions.setFilterTerm, (state, { term }) => ({
+  on(ExperiencePageActions.setFilterTerm, (state, { term }) => ({
     ...state,
     filterTerm: term,
     searchQuery: parseSearchQuery(term),
   })),
-  on(CvPageActions.toggleSectionFilter, (state, { section, enabled }) => ({
-    ...state,
-    sectionFilters: {
-      ...state.sectionFilters,
-      [section]: enabled,
-    },
-  })),
-  on(CvPageActions.selectSection, (state, { section }) => {
+  on(
+    ExperiencePageActions.toggleSectionFilter,
+    (state, { section, enabled }) => ({
+      ...state,
+      sectionFilters: {
+        ...state.sectionFilters,
+        [section]: enabled,
+      },
+    })
+  ),
+  on(ExperiencePageActions.selectSection, (state, { section }) => {
     return {
       ...state,
       selectedSections: section,
     };
   }),
-  on(CvApiActions.cVLoadDataSuccess, (state, { data }) => {
+  on(ExperienceApiActions.experienceLoadDataSuccess, (state, { data }) => {
     // Initialize all projects as expanded by default
     const expandedProjects: { [key: string]: boolean } = {};
     data.experience.forEach((company) =>
@@ -50,7 +56,7 @@ export const cvReducer = createReducer(
       expandedProjects,
     };
   }),
-  on(CvApiActions.cVLoadDataFailure, (state, { error }) => ({
+  on(ExperienceApiActions.experienceLoadDataFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,

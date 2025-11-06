@@ -1,33 +1,34 @@
 import { createSelector } from '@ngrx/store';
-import { CvState } from './cv.state';
-import { CompanyExperience } from '../../models/cv.model';
+import { ExperienceState } from './experience.state';
+import { CompanyExperience } from '../../models/experience.model';
 
-export const selectCvState = (state: { cv: CvState }) => state.cv;
+export const selectExperienceState = (state: { experience: ExperienceState }) =>
+  state.experience;
 
 export const selectLoading = createSelector(
-  selectCvState,
-  (state: CvState) => state.loading
+  selectExperienceState,
+  (state: ExperienceState) => state.loading
 );
 
 export const selectError = createSelector(
-  selectCvState,
-  (state: CvState) => state.error
+  selectExperienceState,
+  (state: ExperienceState) => state.error
 );
 
 export const selectBasics = createSelector(
-  selectCvState,
-  (state: CvState) => state.basics
+  selectExperienceState,
+  (state: ExperienceState) => state.basics
 );
 
 export const selectSelectedSections = createSelector(
-  selectCvState,
-  (state: CvState) => state.selectedSections
+  selectExperienceState,
+  (state: ExperienceState) => state.selectedSections
 );
 
 // Update existing selectors to respect section visibility
 export const selectCompanies = createSelector(
-  selectCvState,
-  (state: CvState): CompanyExperience[] => {
+  selectExperienceState,
+  (state: ExperienceState): CompanyExperience[] => {
     // Sort companies by most recent position's start date
     return [...state.experience].sort((a, b) => {
       const aLatest = new Date(a.positions[0].startDate).getTime();
@@ -38,18 +39,18 @@ export const selectCompanies = createSelector(
 );
 
 export const selectEducation = createSelector(
-  selectCvState,
-  (state: CvState) => state.education
+  selectExperienceState,
+  (state: ExperienceState) => state.education
 );
 
 export const selectCertifications = createSelector(
-  selectCvState,
-  (state: CvState) => state.certifications
+  selectExperienceState,
+  (state: ExperienceState) => state.certifications
 );
 
 export const selectSkills = createSelector(
-  selectCvState,
-  (state: CvState) => state.skills
+  selectExperienceState,
+  (state: ExperienceState) => state.skills
 );
 
 export const selectBasicsName = createSelector(
@@ -58,11 +59,11 @@ export const selectBasicsName = createSelector(
 );
 
 export const selectFilterTerm = createSelector(
-  selectCvState,
-  (state: CvState) => state.filterTerm
+  selectExperienceState,
+  (state: ExperienceState) => state.filterTerm
 );
 
 export const selectParsedQuery = createSelector(
-  selectCvState,
+  selectExperienceState,
   (state) => state.searchQuery
 );

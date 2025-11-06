@@ -1,6 +1,6 @@
 import { TimelineItem } from '@shared/components/timeline/timeline.models';
 
-export interface CvData {
+export interface ExperienceData {
   basics: {
     name: string;
     contact?: {
