@@ -5,13 +5,33 @@
         mat-button
         routerLink="/"
         routerLinkActive="active"
-        matTooltip="Go to home"
+        [routerLinkActiveOptions]="{ exact: true }"
+        matTooltip="Home"
       >
-        <span class="name">{{ name$ | async }}</span>
+        <mat-icon>home</mat-icon>
+        <span class="nav-label">Home</span>
+      </a>
+      <a
+        mat-button
+        routerLink="/experience"
+        routerLinkActive="active"
+        matTooltip="Experience & CV"
+      >
+        <mat-icon>work</mat-icon>
+        <span class="nav-label">Experience</span>
+      </a>
+      <a
+        mat-button
+        routerLink="/contact"
+        routerLinkActive="active"
+        matTooltip="Contact"
+      >
+        <mat-icon>contact_mail</mat-icon>
+        <span class="nav-label">Contact</span>
       </a>
     </div>
 
-    <div class="center-section">
+    <div class="center-section" *ngIf="isExperiencePage">
       <mat-form-field appearance="outline" class="search-field">
         <mat-label>Search CV</mat-label>
         <input
