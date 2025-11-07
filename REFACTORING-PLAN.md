@@ -216,33 +216,33 @@ interface ContactForm {
 
 #### 5.2 Components to Create
 
-- [ ] ContactComponent (container)
-- [ ] ContactFormComponent (with Cloudflare Turnstile integration)
-- [ ] FormSuccessComponent
-- [ ] FormErrorComponent
+- [x] ContactComponent (container with form - integrated)
+- [ ] ~~ContactFormComponent (with Cloudflare Turnstile integration)~~ - Not needed, integrated in ContactComponent
+- [ ] ~~FormSuccessComponent~~ - Integrated in ContactComponent
+- [ ] ~~FormErrorComponent~~ - Integrated in ContactComponent
 
 #### 5.2.1 Content Reference
 
-- **Source**: `copy/contact.md`
-- Convert markdown intro text to HTML
-- Implement form below the introductory copy
-- Add Cloudflare Turnstile for spam protection
+- [x] **Source**: `copy/contact.md`
+- [x] Convert markdown intro text to HTML
+- [x] Implement form below the introductory copy
+- [ ] Add Cloudflare Turnstile for spam protection (deferred - requires backend)
 
 #### 5.3 State Management (Minimal)
 
-- [ ] Create contact.actions.ts (for form submission state only)
-- [ ] Create contact.reducer.ts (submission status, success/error messages)
-- [ ] Create contact.selectors.ts
-- [ ] Create contact.effects.ts (API call handling)
-- [ ] Create contact.state.ts
+- [x] Create contact.actions.ts (for form submission state only)
+- [x] Create contact.reducer.ts (submission status, success/error messages)
+- [x] Create contact.selectors.ts
+- [x] Create contact.effects.ts (API call handling - placeholder)
+- [x] Create contact.state.ts
 - **Note**: Only managing submission state, not form content (form content is static)
 
 #### 5.4 Backend Integration
 
-- [ ] Create ContactService for API calls
+- [ ] Create ContactService for API calls (placeholder effect in place)
 - [ ] Define API endpoints (Cloudflare Worker)
-- [ ] Implement error handling
-- [ ] Add form validation
+- [ ] Implement error handling (basic handling in place)
+- [x] Add form validation (Angular Validators)
 - [ ] Integrate Cloudflare Turnstile (spam protection)
 - [ ] Create environment configuration for API URLs and Turnstile site key
 

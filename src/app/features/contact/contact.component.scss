@@ -1,5 +1,169 @@
 .contact-container {
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 2rem 1rem;
+  max-width: 900px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-intro {
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #1976d2;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.contact-form-section {
+  mat-card {
+    mat-card-header {
+      margin-bottom: 1rem;
+
+      mat-card-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+
+        mat-icon {
+          color: #1976d2;
+        }
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+
+      &.two-columns {
+        mat-form-field {
+          flex: 1;
+        }
+      }
+
+      .full-width {
+        width: 100%;
+      }
+    }
+
+    mat-form-field {
+      mat-icon[matPrefix] {
+        margin-right: 0.5rem;
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 150px;
+
+      .button-spinner {
+        display: inline-block;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 4px;
+    margin-top: 1rem;
+
+    mat-icon {
+      color: #c62828;
+    }
+  }
+
+  .success-card {
+    background-color: #e8f5e9;
+    text-align: center;
+
+    mat-card-header {
+      mat-card-title {
+        color: #2e7d32;
+
+        mat-icon {
+          color: #2e7d32;
+        }
+      }
+    }
+
+    mat-card-content {
+      p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      button {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .contact-intro {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  .contact-form-section {
+    form {
+      .form-row.two-columns {
+        flex-direction: column;
+      }
+    }
+
+    .form-actions {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
 }
