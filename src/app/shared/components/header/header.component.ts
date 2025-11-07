@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -59,6 +59,8 @@ export class HeaderComponent {
     .select(selectBasics)
     .pipe(map((basics) => basics?.contact?.github));
   parsedQuery$ = this.store.select(selectParsedQuery);
+
+  readonly isDevMode = isDevMode();
 
   get isExperiencePage(): boolean {
     return this.router.url === '/experience';

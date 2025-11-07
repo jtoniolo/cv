@@ -13,9 +13,14 @@ I build enterprise applications that work—scalable, maintainable, and designed
 - Automate workflows and integrate disparate systems
 - Get technical projects back on track
 
-### Tech I use:
+### Core Technologies & Platforms
 
-.NET Core, ASP.NET, Angular, React, Azure, Docker, Kubernetes, SQL Server, MongoDB, ElasticSearch, n8n, Node-RED.
+- **Cloud & Backend:** .NET Core, ASP.NET, NestJS, Azure (Azure Functions, etc.)
+- **Frontend:** Angular, React, JavaScript/TypeScript
+- **Data:** SQL Server, MongoDB, ElasticSearch
+- **DevOps & ALM:** Azure DevOps (Pipelines), GitHub (Actions), Docker, Kubernetes
+- **Business Applications & Automation:** Dynamics 365 CE, Power Platform, n8n, Node-RED
+- **AI & Generative AI:** Azure Open AI, Azure AI Search, Azure AI Studio, Langchain, LM Studio, Ollama
 
 ### Recent highlight:
 

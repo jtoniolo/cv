@@ -21,12 +21,23 @@
         <span class="nav-label">Experience</span>
       </a>
       <a
+        *ngIf="isDevMode"
         mat-button
         routerLink="/contact"
         routerLinkActive="active"
         matTooltip="Contact"
       >
         <mat-icon>contact_mail</mat-icon>
+        <span class="nav-label">Contact</span>
+      </a>
+      <a
+        *ngIf="!isDevMode && (linkedinUrl$ | async)"
+        [href]="linkedinUrl$ | async"
+        target="_blank"
+        mat-button
+        matTooltip="Contact me on LinkedIn"
+      >
+        <mat-icon svgIcon="linkedin"></mat-icon>
         <span class="nav-label">Contact</span>
       </a>
     </div>

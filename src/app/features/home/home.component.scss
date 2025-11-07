@@ -76,10 +76,17 @@
 }
 
 .tech-section {
-  mat-chip-set {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .tech-content {
+    p {
+      margin: 0.75rem 0;
+      line-height: 1.7;
+      font-size: 1rem;
+
+      strong {
+        color: #1976d2;
+        margin-right: 0.25rem;
+      }
+    }
   }
 }
 
