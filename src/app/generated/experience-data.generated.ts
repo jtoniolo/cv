@@ -8,17 +8,16 @@ export const EXPERIENCE_DATA: ExperienceData = {
       "linkedin": "https://www.linkedin.com/in/jefftoniolo/",
       "github": "https://github.com/jtoniolo"
     },
-    "title": "Senior Full Stack Developer",
-    "summary": "Seasoned professional adept at building and supporting top-tier applications in the not-for-profit; financial and oil and gas industries. Rapidly troubleshooting issues using a logical and systematic approach. Experienced mentor of technical staff, providing guidance and encouragement. Expert implementer of systems and streamlined processes delivering major efficiency gains and cost savings.",
+    "title": "Senior Systems Architect",
+    "summary": "Seasoned professional adept at architecting, delivering, and supporting top-tier applications in the not-for-profit, financial, and public sectors. Rapidly troubleshooting complex, system-level issues using a logical and systematic approach. Experienced mentor of technical staff, providing architectural guidance. Expert architect and implementer of systems and streamlined processes delivering major efficiency gains and cost savings.",
     "highlights": [
-      "CRM 2011 & 2013 Certified",
+      "Solution & Systems Architecture",
+      "Application Design, Development & Implementation",
       "Process Streamlining",
       "Service Management (ITIL)",
-      "Excellent Communicator",
-      "Custom Application Support",
-      "Troubleshooting",
-      "Database Development",
-      "Application Design, Development & Implementation",
+      "Technical Leadership & Mentoring",
+      "Troubleshooting & Risk Mitigation",
+      "Database Design & Development",
       "User and Technical Documentation"
     ],
     "keywords": [
@@ -35,15 +34,15 @@ export const EXPERIENCE_DATA: ExperienceData = {
       "company": "BDO CANADA LLP",
       "positions": [
         {
-          "title": "Sr. Full Stack Developer",
+          "title": "Sr. Full Stack Developer / Architect",
           "startDate": "2021-04-01",
           "endDate": "2024-06-30",
-          "summary": "Led and supported multiple projects as a Senior Full Stack Developer, overseeing the development and maintenance of multitenant, multi-tier web applications and Microservices. Demonstrated strong leadership by managing teams of developers and ensuring successful project delivery. Utilized a wide range of technologies, including ASP.Net Core, ABP Framework, Azure SQL backend, and Angular frontends. Implemented structured logging and security architecture improvements to enhance application performance and security.",
+          "summary": "Provided architectural oversight and technical leadership for multiple projects, overseeing the design, development, and maintenance of multitenant, multi-tier web applications and Microservices. Demonstrated strong leadership by managing developer teams and setting technical strategy to ensure successful project delivery. Designed and implemented structured logging and security architecture improvements to enhance application performance, supportability, and security.",
           "projects": [
             {
               "name": "Caribbean Managed Services Project",
-              "role": "Lead Developer for two Caribbean government clients, leading a team of two other developers",
-              "responsibilities": "Oversaw maintenance, support, and enhancements for two applications covering Beneficial Ownership Reporting and Economic Substance Reporting. Provided support and maintenance for a collection of multitenant, multi-tier web applications and Microservices. Designed and developed bug fixes and enhancements per client requests. Implemented structured logging using Serilog and Application Insights to improve traceability. Assisted in the design of security architecture improvements, evaluating various proposed options with the goal of implementing Web Application Firewall in a cost-effective manner.",
+              "role": "Lead Developer & Architect for two Caribbean government clients",
+              "responsibilities": "Oversaw maintenance, support, and architectural enhancements for two applications covering Beneficial Ownership Reporting and Economic Substance Reporting. Led the evaluation and design of security architecture improvements, assessing various options for cost-effective Web Application Firewall implementation. Designed and developed critical bug fixes and enhancements. Implemented structured logging using Serilog and Application Insights to improve system traceability.",
               "technologies": [
                 "Angular",
                 "ASP.NET Core",
@@ -64,7 +63,7 @@ export const EXPERIENCE_DATA: ExperienceData = {
             {
               "name": "Economic Substance V2 Project",
               "role": "Lead Developer and Architect",
-              "responsibilities": "Modernized the Economic Substance app by eliminating outdated third-party dependencies and switching to the current version of .NET (version 7 at the time). Chose ABP Framework for rapid development.",
+              "responsibilities": "Architected the modernization of the Economic Substance app, defining the technical stack (.NET 7) and eliminating outdated third-party dependencies. Selected ABP Framework for rapid development and authored key architecture documents for client and internal review board presentation.",
               "technologies": [
                 "ASP.NET Core",
                 "Angular",
@@ -83,8 +82,8 @@ export const EXPERIENCE_DATA: ExperienceData = {
             },
             {
               "name": "RAG IP Project",
-              "role": "Developer",
-              "responsibilities": "Cleaned up a RAG app built in Python and React. Converted the API from an ad-hoc structure to a proper RESTful API following development best practices.",
+              "role": "Developer / Architect",
+              "responsibilities": "Re-architected a RAG application's API from an ad-hoc structure to a proper RESTful API, adhering to best practices. This created a standardized and maintainable application.",
               "technologies": [
                 "Python",
                 "React",
@@ -126,20 +125,17 @@ export const EXPERIENCE_DATA: ExperienceData = {
           ]
         },
         {
-          "title": "CRM Developer",
+          "title": "Sr. CRM Developer / Technical Lead",
           "startDate": "2013-01-14",
           "endDate": "2021-04-01",
           "responsibilities": [
-            "Design and implement CRM Customizations, Workflows, Dialogs, Form-level JavaScript, Plug-ins, Azure Functions and Custom Controls and User Interfaces",
-            "Participate in face to face detailed design meetings with clients when a Development SME is required",
-            "Designed and helped build a very long running invoice generation process using Azure Durable Functions",
-            "Developed a custom Drag and Drop GUI allowing association of Contacts with Bookable Resource records",
-            "Designed and developed PCI compliant integration for payment card processing",
-            "Designed and built a rapid-development framework compatible with CRM 2011 and up plug-ins",
-            "Developed custom GUI for rapid entry of Project Time and Cost data",
-            "Development of plug-ins and custom workflow activities using C#",
-            "Development of form automation using JavaScript and CRM 2013 Business Rules",
-            "Development of custom web resource controls using HTML5, CSS3 and JavaScript"
+            "Acted as technical lead and architect for Dynamics CRM solutions",
+            "Architected and built a rapid-development framework for CRM 2011+ plug-ins and workflow activities",
+            "Designed and architected a PCI compliant payment integration utilizing tokenization and a custom ASP.NET REST API",
+            "Designed and implemented a highly scalable, long-running invoice generation process using Azure Durable Functions",
+            "Served as the development SME and technical authority in detailed, face-to-face client design meetings",
+            "Developed a custom Drag and Drop GUI (HTML5/CSS3/JavaScript) for graphical resource scheduling",
+            "Design and implement CRM Customizations, Workflows, Plug-ins, and Custom Controls"
           ],
           "keywords": [
             "Dynamics CRM",
@@ -310,7 +306,10 @@ export const EXPERIENCE_DATA: ExperienceData = {
           "MS SQL BIDS/SQL Server Data Tools",
           "Microsoft Dynamics CRM SDK",
           "Sandcastle",
-          "TFS (on premise & online)"
+          "TFS (on premise & online)",
+          "Visual Studio 2019/2022",
+          "Azure DevOps",
+          "GitHub"
         ],
         "keywords": [
           "IDE",
@@ -328,7 +327,8 @@ export const EXPERIENCE_DATA: ExperienceData = {
           "T-SQL",
           "VB",
           "VB Script",
-          "VBA"
+          "VBA",
+          "Python"
         ],
         "keywords": [
           "programming",
