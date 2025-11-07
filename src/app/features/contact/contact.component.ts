@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { Title, Meta } from '@angular/platform-browser';
 import {
   ContactPageActions,
   selectIsSubmitting,
@@ -40,6 +41,8 @@ import {
 export class ContactComponent implements OnDestroy {
   private readonly fb = inject(FormBuilder);
   private readonly store = inject(Store);
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
   private readonly destroy$ = new Subject<void>();
 
   contactForm: FormGroup;
@@ -49,6 +52,14 @@ export class ContactComponent implements OnDestroy {
   successMessage$ = this.store.select(selectSuccessMessage);
 
   constructor() {
+    // Set page title and meta tags
+    this.titleService.setTitle('Contact - Jeffrey Toniolo | Senior Systems Architect');
+    this.metaService.updateTag({
+      name: 'description',
+      content:
+        'Get in touch for consulting engagements, architectural reviews, or technical challenges. Available for full stack development, legacy system modernization, and DevOps implementation.',
+    });
+
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
