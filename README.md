@@ -5,18 +5,19 @@
 A comprehensive consulting/contractor profile application built with Angular, Angular Material, and NgRx. This application serves as a professional showcase with three main sections:
 
 1. **Home Page**: Static marketing page with professional profile and value proposition
-2. **Experience**: Data-driven CV section with search, filter, and PDF export capabilities
-3. **Contact**: Form with Cloudflare Worker backend integration and Turnstile spam protection
+2. **Experience**: Data-driven CV section with search, filter, and section visibility controls
+3. **Contact**: Contact form with state management (backend integration ready)
 
 ### Key Features
 
-- **Home Page**: Static HTML/CSS marketing content (pure presentation)
-- **Experience**: Comprehensive CV with search, filter, and PDF export capabilities
-- **Contact**: Form with backend integration (Cloudflare Worker + Turnstile)
-- **Responsive Design**: Optimized for all screen sizes
-- **Type-Safe**: Strict TypeScript implementation
-- **State Management**: NgRx for experience section and form submission state
-- **Content Approach**: Static content for home/contact, JSON-driven for experience
+- **Home Page**: Static HTML/CSS marketing content with services, technologies, and call-to-action
+- **Experience**: Comprehensive CV with keyword search, section filtering, and responsive layout
+- **Contact**: Validated form with submission state management (API integration ready)
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **SEO Optimized**: Page titles, meta descriptions, and Open Graph tags
+- **Type-Safe**: Strict TypeScript implementation throughout
+- **State Management**: NgRx for experience data and contact form submission state
+- **Accessibility**: Proper focus management and ARIA labels
 
 ## Instructions for Copilot
 
@@ -81,11 +82,13 @@ Follow these guidelines:
 # Install dependencies
 yarn install
 
-# Generate data files
-yarn generate-cv
+# Generate experience data files
+yarn generate-experience
 
 # Start development server
 yarn start
+
+# Open browser to http://localhost:4200
 ```
 
 ### Development Workflow
