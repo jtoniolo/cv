@@ -1,5 +1,160 @@
 .home-container {
-  padding: 2rem;
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 2rem 0;
+
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #1976d2;
+  }
+
+  .hero-intro {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.services-section,
+.tech-section,
+.highlight-section {
+  mat-card {
+    mat-card-header {
+      mat-card-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+
+        mat-icon {
+          color: #1976d2;
+        }
+      }
+    }
+  }
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    mat-icon {
+      color: #1976d2;
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+}
+
+.tech-section {
+  mat-chip-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.highlight-card {
+  background-color: #e3f2fd;
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+
+.closing-section {
+  text-align: center;
+  padding: 2rem 0;
+
+  .closing-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .hero-section {
+    padding: 1rem 0;
+
+    .hero-title {
+      font-size: 1.75rem;
+    }
+
+    .hero-intro {
+      font-size: 1.125rem;
+    }
+
+    .hero-description {
+      font-size: 0.875rem;
+    }
+  }
+
+  .services-list li {
+    font-size: 0.875rem;
+  }
+
+  .closing-section .closing-text {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+
+    a {
+      width: 100%;
+    }
+  }
 }

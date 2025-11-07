@@ -1,4 +1,123 @@
 <div class="home-container">
-  <h1>Home Page - Coming Soon</h1>
-  <p>This is a placeholder for the home page.</p>
+  <section class="hero-section">
+    <h1 class="hero-title">
+      Tired of projects that drag on, technical debt that compounds, or systems
+      that don't scale?
+    </h1>
+    <p class="hero-intro">
+      I'm a <strong>Senior Systems Architect</strong> who's spent 20+ years
+      fixing exactly those problems for government, financial, and not-for-profit
+      clients.
+    </p>
+    <p class="hero-description">
+      I build enterprise applications that work—scalable, maintainable, and
+      designed to solve your actual business needs, not just implement features.
+      At BDO Canada, I led teams modernizing government systems, eliminated
+      maintenance backlogs, and designed solutions that balanced security
+      requirements with real-world constraints.
+    </p>
+  </section>
+
+  <section class="services-section">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>handyman</mat-icon>
+          I can help you:
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="services-list">
+          <li>
+            <mat-icon>code</mat-icon>
+            Build full stack applications from concept to deployment
+          </li>
+          <li>
+            <mat-icon>upgrade</mat-icon>
+            Modernize legacy systems without breaking everything
+          </li>
+          <li>
+            <mat-icon>settings</mat-icon>
+            Implement proper CI/CD and DevOps practices
+          </li>
+          <li>
+            <mat-icon>architecture</mat-icon>
+            Design microservices architectures that actually improve your system
+          </li>
+          <li>
+            <mat-icon>integration_instructions</mat-icon>
+            Automate workflows and integrate disparate systems
+          </li>
+          <li>
+            <mat-icon>track_changes</mat-icon>
+            Get technical projects back on track
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="tech-section">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>build_circle</mat-icon>
+          Tech I use:
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-chip-set aria-label="Technologies">
+          <mat-chip>.NET Core</mat-chip>
+          <mat-chip>ASP.NET</mat-chip>
+          <mat-chip>Angular</mat-chip>
+          <mat-chip>React</mat-chip>
+          <mat-chip>Azure</mat-chip>
+          <mat-chip>Docker</mat-chip>
+          <mat-chip>Kubernetes</mat-chip>
+          <mat-chip>SQL Server</mat-chip>
+          <mat-chip>MongoDB</mat-chip>
+          <mat-chip>ElasticSearch</mat-chip>
+          <mat-chip>n8n</mat-chip>
+          <mat-chip>Node-RED</mat-chip>
+        </mat-chip-set>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="highlight-section">
+    <mat-card class="highlight-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>stars</mat-icon>
+          Recent highlight:
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Modernized a government reporting application, migrating to .NET 7
+          with microservices architecture and ElasticSearch, cutting search
+          performance from minutes to seconds while eliminating outdated
+          dependencies.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="closing-section">
+    <p class="closing-text">
+      I communicate clearly, deliver on time, and write code that your next
+      developer won't curse at. 20 years of experience means I've seen what
+      works and what doesn't—and I'll tell you honestly.
+    </p>
+    <div class="cta-buttons">
+      <a mat-raised-button color="primary" routerLink="/contact">
+        <mat-icon>mail</mat-icon>
+        Let's discuss your project
+      </a>
+      <a mat-stroked-button color="primary" routerLink="/experience">
+        <mat-icon>work</mat-icon>
+        View my experience
+      </a>
+    </div>
+  </section>
 </div>

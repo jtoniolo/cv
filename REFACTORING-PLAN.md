@@ -150,7 +150,7 @@ Home page is **PURE STATIC HTML/CSS** - just sales copy in templates with Angula
 
 #### 4.2 Components to Create
 
-- [ ] HomeComponent - Empty TypeScript class, all content in `home.component.html`
+- [x] HomeComponent - Empty TypeScript class, all content in `home.component.html`
 - **NO sub-components needed** - use Angular Material components directly in template
 
 #### 4.3 Implementation Approach
@@ -192,10 +192,10 @@ export class HomeComponent {
 
 #### 4.4 Content Reference
 
-- **Source**: `copy/profile.md`
-- Convert markdown to HTML/Angular Material components
-- Maintain content structure and messaging
-- Style with Material Design components
+- [x] **Source**: `copy/profile.md`
+- [x] Convert markdown to HTML/Angular Material components
+- [x] Maintain content structure and messaging
+- [x] Style with Material Design components
 
 ### Phase 5: Contact Form Implementation
 
