@@ -7,11 +7,35 @@
 
 .footer-content {
   width: 100%;
-  text-align: center;
-  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.copyright {
+  font-size: 0.875rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.5rem;
 }
 
 :host {
   display: block;
   height: 64px; // Match the height for proper spacing in the main content
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 8px;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+    text-align: center;
+  }
 }

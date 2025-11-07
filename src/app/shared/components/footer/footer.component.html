@@ -1,7 +1,27 @@
 <footer class="footer">
   <mat-toolbar color="primary">
     <div class="footer-content">
-      <span>© {{currentYear}} All Rights Reserved</span>
+      <span class="copyright">© {{currentYear}} {{ name$ | async }}. All Rights Reserved.</span>
+      <div class="footer-links">
+        <a
+          *ngIf="linkedinUrl$ | async"
+          [href]="linkedinUrl$ | async"
+          target="_blank"
+          mat-icon-button
+          aria-label="LinkedIn profile"
+        >
+          <mat-icon>link</mat-icon>
+        </a>
+        <a
+          *ngIf="githubUrl$ | async"
+          [href]="githubUrl$ | async"
+          target="_blank"
+          mat-icon-button
+          aria-label="GitHub profile"
+        >
+          <mat-icon>code</mat-icon>
+        </a>
+      </div>
     </div>
   </mat-toolbar>
 </footer>
