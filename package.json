@@ -7,13 +7,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "yarn generate-experience && ng build",
-    "build:prod": "yarn generate-experience && ng build --configuration production && rm -rf docs/* && cp -r dist/cv/browser/* docs/",
+    "build:prod": "yarn generate-experience && ng build --configuration production && rm -rf docs/* && cp -r dist/consulting-profile/browser/* docs/",
     "build:cloudflare": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
     "generate-experience": "ts-node scripts/generate-experience-data.ts",
-    "analyze": "source-map-explorer dist/cv/*.js"
+    "analyze": "source-map-explorer dist/consulting-profile/*.js"
   },
   "private": true,
   "dependencies": {

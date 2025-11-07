@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +8,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionSelectorComponent } from '../section-selector/section-selector.component';
 import { ExperiencePageActions } from '../../../state';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
@@ -46,6 +46,7 @@ export class HeaderComponent {
   private readonly store = inject(Store);
   private readonly iconRegistry = inject(MatIconRegistry);
   private readonly sanitizer = inject(DomSanitizer);
+  private readonly router = inject(Router);
 
   searchControl = new FormControl<string>('');
   name$ = this.store
@@ -58,6 +59,12 @@ export class HeaderComponent {
     .select(selectBasics)
     .pipe(map((basics) => basics?.contact?.github));
   parsedQuery$ = this.store.select(selectParsedQuery);
+
+  readonly isDevMode = isDevMode();
+
+  get isExperiencePage(): boolean {
+    return this.router.url === '/experience';
+  }
 
   constructor() {
     this.iconRegistry.addSvgIcon(

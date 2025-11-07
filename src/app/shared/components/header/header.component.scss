@@ -29,6 +29,23 @@
 
 .left-section {
   flex: 0 0 auto;
+  display: flex;
+  gap: 0.25rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .nav-label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
 }
 
 .center-section {
@@ -70,5 +87,11 @@
 
   .search-field {
     min-width: 150px;
+  }
+
+  .left-section {
+    .nav-label {
+      display: none;
+    }
   }
 }
